@@ -116,35 +116,28 @@ export class Home {
     }
   ];
 petalPaths = [
-  "M10,0 C14,3 14,7 10,10 C6,13 2,11 0,7 C-2,3 2,0 10,0Z",
-  "M8,0 C12,2 13,8 8,11 C3,14 -1,9 1,4 C3,0 6,-1 8,0Z",
-  "M6,0 C11,0 14,5 11,9 C8,13 2,13 0,8 C-2,4 2,0 6,0Z"
+  'M10,0 C14,3 14,7 10,10 C6,13 2,11 0,7 C-2,3 2,0 10,0Z',
+  'M8,0 C12,2 13,8 8,11 C3,14 -1,9 1,4 C3,0 6,-1 8,0Z',
+  'M6,0 C11,0 14,5 11,9 C8,13 2,13 0,8 C-2,4 2,0 6,0Z'
 ];
-petals = Array.from({ length: 18 }, (_, i) => {
-  const left     = Math.random() * 100;
-  // const delay    = +(Math.random() * 12).toFixed(2);
-  const duration = +(8 + Math.random() * 10).toFixed(2);
-  const size     = Math.floor(8 + Math.random() * 12);
-  
 
-const delay = Math.random() * 10;
-const negativeDelay = -Math.random() * duration;
+petals = Array.from({ length: 28 }, (_, i) => {
+  const duration = 9 + Math.random() * 7;
+  const delay = -Math.random() * duration;
 
-return {
-  id: i,
-  path: this.petalPaths[i % this.petalPaths.length],
-  size,
-  svgAnimation: `petalSway ${duration}s ${negativeDelay}s ease-in-out infinite alternate`,
-  style: {
-    left: `${left}%`,
-    '--petal-dur': `${duration}s`,
-    '--petal-delay': `${negativeDelay}s`
-  }
-};
-
+  return {
+    id: i,
+    path: this.petalPaths[i % this.petalPaths.length],
+    size: 10 + Math.random() * 10,
+    svgAnimation: `petalSway ${3 + Math.random() * 3}s ${delay}s ease-in-out infinite alternate`,
+    style: {
+      left: `${Math.random() * 100}%`,
+      '--petal-dur': `${duration}s`,
+      '--petal-delay': `${delay}s`,
+      '--petal-sway': `${3 + Math.random() * 3}s`
+    }
+  };
 });
-
-
 
 
 
@@ -161,11 +154,15 @@ return {
     this.my = event.clientY;
   }
 
-  ngAfterViewInit(): void {
-    this.startCursor();
-    this.startRevealObserver();
-    this.startTestimonials();
-  }
+
+ngAfterViewInit(): void {
+  this.startCursor();
+  this.startRevealObserver();
+
+  setInterval(() => {
+    this.nextTestimonial(false);
+  }, 4000);
+}
 
   ngOnDestroy(): void {
     if (this.timer) window.clearInterval(this.timer);

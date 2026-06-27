@@ -1,44 +1,37 @@
 <div class="cursor-dot" #cursorDot></div>
 <div class="cursor-ring" #cursorRing></div>
 
-<nav [class.scrolled]="isScrolled">
-  <a class="nav-wordmark" routerLink="/">Velinea</a>
+<section class="hero">
 
-  <div class="nav-links">
-    <a href="#shop">Shop</a>
-    <a href="#occasions">Occasions</a>
-    <a href="#about">About</a>
+
+  <div class="petals">
+    @for (petal of petals; track petal.id) {
+      <div class="petal" [ngStyle]="petal.style">
+        <svg
+          [attr.width]="petal.size"
+          [attr.height]="petal.size"
+          viewBox="-2 -2 16 16"
+          [style.animation]="petal.svgAnimation"
+        >
+          <path [attr.d]="petal.path" fill="#D0013F"></path>
+        </svg>
+      </div>
+    }
   </div>
 
-  <a class="btn-nav" href="#shop">Order Now ↗</a>
-</nav>
-
-<section class="hero">
-<div class="petals">
-  @for (petal of petals; track $index) {
-    <div class="petal" [ngStyle]="petal.style">
-      <svg
-        [attr.width]="petal.size"
-        [attr.height]="petal.size"
-        viewBox="-2 -2 16 16"
-      >
-       <path [attr.d]="petal.path" fill="#9A0130"/>
-      </svg>
-    </div>
-  }
-</div>
-
-  
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
   <div class="blob blob-1"></div>
   <div class="blob blob-2"></div>
 
   <div class="hero-content">
+
     <p class="eyebrow">Luxury Tasty Bites</p>
 
     <h1>
-      Sweet<br />
-      <em>Creations,</em><br />
-      Beautiful<br />
+      Sweet<br>
+      <em>Creations,</em><br>
+      Beautiful<br>
       Moments
     </h1>
 
@@ -48,10 +41,11 @@
 
     <div class="hero-actions">
       <a class="btn-primary" href="#shop">Shop Now →</a>
-      <a class="btn-secondary" href="#occasions">Explore Occasions</a>
+      <a class="btn-secondary" href="#shop">Explore Occasions</a>
     </div>
 
-    <div class="hero-stats">
+    <!-- <div class="hero-stats">
+
       <div>
         <div class="stat-num">500+</div>
         <div class="stat-label">Happy Clients</div>
@@ -66,30 +60,41 @@
         <div class="stat-num">50+</div>
         <div class="stat-label">Designs</div>
       </div>
-    </div>
+
+    </div> -->
+
   </div>
 
+  <!-- IMAGE UNDER THE TEXT -->
   <div class="hero-image">
-    <div class="hero-ring"></div>
 
-    <div class="image-wrapper">
-      <div class="image-float">
-        <div class="image-card">
-          <img src="/vil.jpeg" alt="Velinea cake" />
-        </div>
-      </div>
-    </div>
+      <div class="image-card">
 
-    <div class="hero-badge">
-      <div class="badge-icon">✓</div>
-      <div>
-        <div class="badge-title">Handcrafted</div>
-        <div class="badge-sub">Made fresh daily</div>
+          <img src="vil.jpeg" alt="Velinea">
+
       </div>
-    </div>
+
+      <div class="hero-badge">
+
+          <div class="badge-icon">✓</div>
+
+          <div>
+
+              <div class="badge-title">
+                  Handcrafted
+              </div>
+
+              <div class="badge-sub">
+                  Made fresh daily
+              </div>
+
+          </div>
+
+      </div>
+
   </div>
-</section>
 
+</section>
 <div class="marquee-strip">
   <div class="marquee-track">
     @for (item of marqueeItems; track $index) {
@@ -110,7 +115,7 @@
     </p>
   </div>
 
-  <div class="card-grid">
+  <div class="card-grid ">
     @for (card of cards; track card.title; let i = $index) {
       <div class="card reveal" [style.transition-delay.s]="i * 0.15">
         <div class="card-img-wrap">
@@ -208,12 +213,6 @@
 <footer>
   <span class="footer-wordmark">Velinea</span>
 
-  <div class="footer-links">
-    <a href="#shop">Shop</a>
-    <a href="#occasions">Occasions</a>
-    <a href="#about">About</a>
-    <a href="#">Contact</a>
-  </div>
 
   <span class="footer-credit">Made with <span>♥</span> Velinea © 2025</span>
 </footer>
