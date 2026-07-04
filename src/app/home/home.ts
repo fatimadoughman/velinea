@@ -56,13 +56,13 @@ export class Home {
       title: 'Celebration Cakes',
       sub: 'For every milestone',
       tag: 'Bestseller',
-      image: 'vil.jpeg'
+      image: 'boq.jpg'
     },
     {
       title: 'Floral Gifts',
       sub: 'Blooms & sweetness',
       tag: 'New',
-      image: 'vil.jpeg'
+      image: 'cup.jpg'
     },
     {
       title: 'Gift Boxes',

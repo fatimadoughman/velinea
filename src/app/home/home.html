@@ -1,9 +1,9 @@
 <div class="cursor-dot" #cursorDot></div>
 <div class="cursor-ring" #cursorRing></div>
 
+
+
 <section class="hero">
-
-
   <div class="petals">
     @for (petal of petals; track petal.id) {
       <div class="petal" [ngStyle]="petal.style">
@@ -19,82 +19,22 @@
     }
   </div>
 
-  <div class="blob blob-1"></div>
-  <div class="blob blob-2"></div>
-  <div class="blob blob-1"></div>
-  <div class="blob blob-2"></div>
+  <div class="hero-inner">
+    <p class="section-label">Welcome to Velinea</p>
 
-  <div class="hero-content">
-
-    <p class="eyebrow">Luxury Tasty Bites</p>
-
-    <h1>
-      Sweet<br>
-      <em>Creations,</em><br>
-      Beautiful<br>
-      Moments
+    <h1 class="hero-title">
+      Luxury Cakes<br />
+      Made with Love
     </h1>
 
-    <p class="hero-text">
-      Elegant cakes, floral desserts, and handcrafted gifts made with love for every occasion.
+    <p class="hero-sub">
+      Handcrafted cakes, cookies, and sweet bites for your most beautiful moments.
     </p>
 
-    <div class="hero-actions">
-      <a class="btn-primary" href="#shop">Shop Now →</a>
-      <a class="btn-secondary" href="#shop">Explore Occasions</a>
-    </div>
-
-    <!-- <div class="hero-stats">
-
-      <div>
-        <div class="stat-num">500+</div>
-        <div class="stat-label">Happy Clients</div>
-      </div>
-
-      <div>
-        <div class="stat-num">12+</div>
-        <div class="stat-label">Years of Love</div>
-      </div>
-
-      <div>
-        <div class="stat-num">50+</div>
-        <div class="stat-label">Designs</div>
-      </div>
-
-    </div> -->
-
+    <a href="#shop" class="btn-hero">Explore Collection ↗</a>
   </div>
-
-  <!-- IMAGE UNDER THE TEXT -->
-  <div class="hero-image">
-
-      <div class="image-card">
-
-          <img src="vil.jpeg" alt="Velinea">
-
-      </div>
-
-      <div class="hero-badge">
-
-          <div class="badge-icon">✓</div>
-
-          <div>
-
-              <div class="badge-title">
-                  Handcrafted
-              </div>
-
-              <div class="badge-sub">
-                  Made fresh daily
-              </div>
-
-          </div>
-
-      </div>
-
-  </div>
-
 </section>
+
 <div class="marquee-strip">
   <div class="marquee-track">
     @for (item of marqueeItems; track $index) {
@@ -115,7 +55,7 @@
     </p>
   </div>
 
-  <div class="card-grid ">
+  <div class="card-grid">
     @for (card of cards; track card.title; let i = $index) {
       <div class="card reveal" [style.transition-delay.s]="i * 0.15">
         <div class="card-img-wrap">
@@ -128,6 +68,7 @@
             <div class="card-title">{{ card.title }}</div>
             <div class="card-sub">{{ card.sub }}</div>
           </div>
+
           <div class="card-arrow">→</div>
         </div>
       </div>
@@ -135,10 +76,13 @@
   </div>
 </section>
 
-<section class="features">
+<section class="features" id="customize">
   <div class="features-header reveal">
     <p class="section-label">Why Velinea</p>
-    <h2 class="section-title">Where craft meets<br /><em>devotion</em></h2>
+    <h2 class="section-title">
+      Where craft meets<br />
+      <em>devotion</em>
+    </h2>
   </div>
 
   <div class="features-grid">
@@ -155,7 +99,9 @@
 <section class="testimonials" id="occasions">
   <div class="testimonials-inner">
     <p class="section-label reveal">What Clients Say</p>
-    <h2 class="section-title reveal">Stories of <em>sweetness</em></h2>
+    <h2 class="section-title reveal">
+      Stories of sweetness and delight
+    </h2>
 
     <div class="tcard">
       <div class="stars">★★★★★</div>
@@ -199,20 +145,22 @@
   </div>
 </section>
 
-<div class="newsletter" id="about">
+<section class="newsletter" id="about">
   <p class="section-label">Stay Sweet</p>
   <h3 class="section-title">Join our world of sweetness</h3>
-  <p>Get new collections, seasonal specials, and behind-the-scenes stories.</p>
+  <p>
+    Get new collections, seasonal specials, and behind-the-scenes stories.
+  </p>
 
   <form class="newsletter-form" (submit)="$event.preventDefault()">
     <input type="email" placeholder="Your email address" />
     <button type="submit" class="btn-subscribe">Subscribe</button>
   </form>
-</div>
+</section>
 
 <footer>
   <span class="footer-wordmark">Velinea</span>
-
-
-  <span class="footer-credit">Made with <span>♥</span> Velinea © 2025</span>
+  <span class="footer-credit">
+    Made with <span>♥</span> Velinea © 2026
+  </span>
 </footer>
