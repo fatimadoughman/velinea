@@ -1,9 +1,10 @@
 <div class="cursor-dot" #cursorDot></div>
 <div class="cursor-ring" #cursorRing></div>
 
-
-
 <section class="hero">
+   <img class="hero-bg" src="vill2.jpeg" alt="Velinea cake background" />
+
+  <div class="hero-overlay"></div>
   <div class="petals">
     @for (petal of petals; track petal.id) {
       <div class="petal" [ngStyle]="petal.style">
@@ -19,7 +20,7 @@
     }
   </div>
 
-  <div class="hero-inner">
+  <div class="hero-content">
     <p class="section-label">Welcome to Velinea</p>
 
     <h1 class="hero-title">
@@ -34,7 +35,6 @@
     <a href="#shop" class="btn-hero">Explore Collection ↗</a>
   </div>
 </section>
-
 <div class="marquee-strip">
   <div class="marquee-track">
     @for (item of marqueeItems; track $index) {
@@ -55,7 +55,7 @@
     </p>
   </div>
 
-  <div class="card-grid">
+  <div class="card-grid ">
     @for (card of cards; track card.title; let i = $index) {
       <div class="card reveal" [style.transition-delay.s]="i * 0.15">
         <div class="card-img-wrap">
@@ -68,7 +68,6 @@
             <div class="card-title">{{ card.title }}</div>
             <div class="card-sub">{{ card.sub }}</div>
           </div>
-
           <div class="card-arrow">→</div>
         </div>
       </div>
@@ -76,13 +75,10 @@
   </div>
 </section>
 
-<section class="features" id="customize">
+<section class="features">
   <div class="features-header reveal">
     <p class="section-label">Why Velinea</p>
-    <h2 class="section-title">
-      Where craft meets<br />
-      <em>devotion</em>
-    </h2>
+    <h2 class="section-title">Where craft meets<br /><em>devotion</em></h2>
   </div>
 
   <div class="features-grid">
@@ -99,9 +95,7 @@
 <section class="testimonials" id="occasions">
   <div class="testimonials-inner">
     <p class="section-label reveal">What Clients Say</p>
-    <h2 class="section-title reveal">
-      Stories of sweetness and delight
-    </h2>
+    <h2 class="section-title reveal">Stories of <em>sweetness</em></h2>
 
     <div class="tcard">
       <div class="stars">★★★★★</div>
@@ -145,22 +139,20 @@
   </div>
 </section>
 
-<section class="newsletter" id="about">
+<div class="newsletter" id="about">
   <p class="section-label">Stay Sweet</p>
   <h3 class="section-title">Join our world of sweetness</h3>
-  <p>
-    Get new collections, seasonal specials, and behind-the-scenes stories.
-  </p>
+  <p>Get new collections, seasonal specials, and behind-the-scenes stories.</p>
 
   <form class="newsletter-form" (submit)="$event.preventDefault()">
     <input type="email" placeholder="Your email address" />
     <button type="submit" class="btn-subscribe">Subscribe</button>
   </form>
-</section>
+</div>
 
 <footer>
   <span class="footer-wordmark">Velinea</span>
-  <span class="footer-credit">
-    Made with <span>♥</span> Velinea © 2026
-  </span>
+
+
+  <span class="footer-credit">Made with <span>♥</span> Velinea © 2026</span>
 </footer>
