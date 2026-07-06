@@ -32,7 +32,7 @@
       Handcrafted cakes, cookies, and sweet bites for your most beautiful moments.
     </p>
 
-    <a href="#shop" class="btn-hero">Explore Collection ↗</a>
+    <!-- <a href="#shop" class="btn-hero">Explore Collection ↗</a> -->
   </div>
 </section>
 <div class="marquee-strip">
@@ -46,7 +46,61 @@
   </div>
 </div>
 
-<section class="collections" id="shop">
+<section class="coming-soon-section">
+  <div class="coming-bg-flower flower-left"></div>
+  <div class="coming-bg-flower flower-right"></div>
+  <div class="petals">
+    @for (petal of petals; track petal.id) {
+      <div class="petal" [ngStyle]="petal.style">
+        <svg
+          [attr.width]="petal.size"
+          [attr.height]="petal.size"
+          viewBox="-2 -2 16 16"
+          [style.animation]="petal.svgAnimation"
+        >
+          <path [attr.d]="petal.path" fill="#D0013F"></path>
+        </svg>
+      </div>
+    }
+  </div>
+ <div class="coming-inner">
+
+    <span class="coming-label">
+            VELINEA
+    </span>
+
+    <h2 class="coming-title">
+        A NEW<br>
+        CHAPTER
+    </h2>
+
+    <div class="coming-divider">
+        <span></span>
+
+        <div class="divider-logo">
+            ✿
+        </div>
+
+        <span></span>
+    </div>
+
+    <p class="coming-text">
+        Every creation begins with a flower,
+        crafted into an unforgettable dessert.
+        <br><br>
+        Our signature collection is arriving soon.
+    </p>
+
+    <a href="https://www.instagram.com/velinea_lb?igsh=MXAyaHZhcHU2NTNwcQ%3D%3D&utm_source=qr" class="coming-btn">
+        STAY TUNED
+    </a>
+
+    <div class="coming-footer">
+        Luxury Cakes • Flower Cakes • Cookies • Sweet Bites
+    </div>
+
+</div>
+<!-- <section class="collections" id="shop">
   <div class="section-header reveal">
     <p class="section-label">Our Collections</p>
     <h2 class="section-title">Made for your sweetest moments</h2>
@@ -155,4 +209,4 @@
 
 
   <span class="footer-credit">Made with <span>♥</span> Velinea © 2026</span>
-</footer>
+</footer> -->

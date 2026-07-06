@@ -869,3 +869,350 @@ footer {
 }
 
 
+/* ===========================
+   COMING SOON SECTION
+=========================== */
+
+.coming-soon-section {
+  position: relative;
+  overflow: hidden;
+  padding: 120px 20px;
+  background: linear-gradient(
+      180deg,
+      #fcfaf7 0%,
+      #f8f2eb 45%,
+      #faf6f1 100%
+  );
+  text-align: center;
+}
+
+.coming-soon-section::before {
+  content: "";
+  position: absolute;
+  inset: 22px;
+  border: 1px solid rgba(200, 154, 88, .35);
+  pointer-events: none;
+}
+
+.coming-inner {
+  position: relative;
+  z-index: 2;
+  max-width: 760px;
+  margin: auto;
+}
+
+/* ===========================
+   LABEL
+=========================== */
+
+.coming-label {
+  display: block;
+  margin-bottom: 20px;
+  color: #bf7a8d;
+  letter-spacing: .55em;
+  text-transform: uppercase;
+  font-size: .85rem;
+  font-weight: 600;
+}
+
+/* ===========================
+   TITLE
+=========================== */
+
+.coming-title {
+
+  font-family: "Playfair Display", serif;
+  font-size: clamp(4rem, 9vw, 7rem);
+  line-height: .92;
+  font-weight: 400;
+
+  margin: 0;
+
+  color: #5d1b28;
+
+  letter-spacing: .08em;
+}
+
+/* ===========================
+   DIVIDER
+=========================== */
+
+.coming-divider {
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 25px;
+
+  margin: 45px auto;
+}
+
+.coming-divider span {
+
+  width: 120px;
+  height: 1px;
+
+  background: linear-gradient(
+      90deg,
+      transparent,
+      #c89a58,
+      transparent);
+}
+
+.divider-logo {
+
+  width: 46px;
+  height: 46px;
+
+  border-radius: 50%;
+
+  border: 1px solid rgba(200,154,88,.45);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #c89a58;
+
+  font-size: 20px;
+
+  background: white;
+}
+
+/* ===========================
+   TEXT
+=========================== */
+
+.coming-text {
+
+  max-width: 520px;
+
+  margin: auto;
+
+  color: #8b6c66;
+
+  line-height: 2;
+
+  font-size: 18px;
+}
+
+/* ===========================
+   BUTTON
+=========================== */
+
+.coming-btn {
+
+  display: inline-block;
+
+  margin-top: 55px;
+
+  padding: 17px 42px;
+
+  border: 1px solid #c89a58;
+
+  text-decoration: none;
+
+  color: #5d1b28;
+
+  text-transform: uppercase;
+
+  letter-spacing: 4px;
+
+  font-weight: 600;
+
+  border-radius: 40px;
+
+  transition: .4s;
+
+  background: rgba(255,255,255,.65);
+
+  backdrop-filter: blur(8px);
+}
+
+.coming-btn:hover {
+
+  background: #5d1b28;
+
+  color: white;
+
+  border-color: #5d1b28;
+
+  transform: translateY(-4px);
+}
+
+/* ===========================
+   FOOTER
+=========================== */
+
+.coming-footer {
+
+  margin-top: 65px;
+
+  color: #b7854c;
+
+  letter-spacing: .35em;
+
+  text-transform: uppercase;
+
+  font-size: .78rem;
+}
+
+/* ===========================
+   DECORATION
+=========================== */
+
+.flower {
+
+  position: absolute;
+
+  font-size: 170px;
+
+  color: rgba(200,154,88,.08);
+
+  pointer-events: none;
+
+  user-select: none;
+}
+
+.flower-left {
+
+  left: -40px;
+
+  top: 60px;
+
+  transform: rotate(-15deg);
+}
+
+.flower-right {
+
+  right: -40px;
+
+  bottom: 60px;
+
+  transform: rotate(18deg);
+}
+
+/* ===========================
+   GOLD SHIMMER
+=========================== */
+
+.coming-title {
+
+  background: linear-gradient(
+      90deg,
+      #5d1b28,
+      #d5a75d,
+      #5d1b28);
+
+  background-size: 300%;
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  animation: shimmer 8s linear infinite;
+}
+
+@keyframes shimmer {
+
+  from {
+    background-position: 0%;
+  }
+
+  to {
+    background-position: 300%;
+  }
+
+}
+
+/* ===========================
+   FADE
+=========================== */
+
+.coming-inner {
+
+  animation: fadeUp 1s ease;
+}
+
+@keyframes fadeUp {
+
+  from {
+
+    opacity: 0;
+
+    transform: translateY(40px);
+
+  }
+
+  to {
+
+    opacity: 1;
+
+    transform: translateY(0);
+
+  }
+
+}
+
+/* ===========================
+   MOBILE
+=========================== */
+
+@media(max-width:768px){
+
+.coming-soon-section{
+
+padding:90px 20px;
+
+}
+
+.coming-title{
+
+font-size:4rem;
+
+}
+
+.coming-divider span{
+
+width:65px;
+
+}
+
+.coming-text{
+
+font-size:17px;
+
+line-height:1.8;
+
+}
+
+.coming-footer{
+
+letter-spacing:.18em;
+
+line-height:2;
+
+}
+
+.flower{
+
+display:none;
+
+}
+
+}
+@media (min-width: 769px) {
+  .hero,
+  
+  .collections,
+  .features,
+  .testimonials,
+  .newsletter,
+  footer {
+    display: none;
+  }
+
+  .coming-soon-section {
+    min-height: 100vh;
+  }
+}
