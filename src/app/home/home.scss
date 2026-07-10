@@ -564,7 +564,7 @@ nav {
 
 /* FOOTER */
 footer {
-  padding: 24px 8%;
+  padding: 15px 8%;
 
   display: flex;
   align-items: center;
@@ -831,7 +831,7 @@ footer {
   }
 
   footer {
-    flex-direction: column;
+    // flex-direction: column;
     text-align: center;
   }
 }
@@ -1047,7 +1047,7 @@ footer {
 
 .coming-footer {
 
-  margin-top: 65px;
+  margin-top: 20px;
 
   color: #b7854c;
 
@@ -1201,18 +1201,216 @@ display:none;
 }
 
 }
-@media (min-width: 769px) {
-  .hero,
+// @media (min-width: 769px) {
+//   .hero,
   
-  .collections,
-  .features,
-  .testimonials,
-  .newsletter,
-  footer {
+//   .collections,
+//   .features,
+//   .testimonials,
+//   .newsletter,
+//   footer {
+//     display: none;
+//   }
+
+//   .coming-soon-section {
+//     min-height: 100vh;
+//   }
+// }
+
+
+.mobile {
     display: none;
+}
+
+@media (max-width: 768px) {
+    .desktop {
+        display: none;
+    }
+
+    .mobile {
+        display: block;
+    }
+}
+.more-section {
+  display: flex;
+  justify-content: center;
+  margin-top: 2.5rem;
+  align-items: center;
+}
+
+.more-btn {
+  display: inline-block;
+  padding: 12px 28px;
+  background:   #470016; /* Adjust to your theme */
+  color: #fff;
+  text-decoration: none;
+  border-radius: 999px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.more-btn:hover {
+  background: #410921;
+  transform: translateY(-2px);
+}
+@media (max-width: 480px) {
+  .card-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
   }
 
-  .coming-soon-section {
-    min-height: 100vh;
+  .card:last-child {
+    grid-column: 1 / -1;   /* span both columns */
+    justify-self: center;  /* center the card */
+    width: 160px;          /* same width as the other cards */
   }
+
+}
+.review-open-btn {
+  margin-top: 1.5rem;
+  padding: 12px 32px;
+  border: none;
+  border-radius: 999px;
+  background: #752b43;
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.review-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 1rem;
+}
+
+.review-modal {
+  width: 100%;
+  max-width: 420px;
+  background: #fff7fb;
+  border-radius: 28px;
+  padding: 2rem;
+  position: relative;
+}
+
+.review-close {
+  position: absolute;
+  top: 14px;
+  right: 18px;
+  border: none;
+  background: transparent;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #5b001f;
+}
+
+.review-modal h3 {
+  color: #5b001f;
+  margin-bottom: 1rem;
+  font-size: 1.8rem;
+}
+
+.review-modal input,
+.review-modal select,
+.review-modal textarea {
+  width: 100%;
+  margin-bottom: 1rem;
+  padding: 12px 14px;
+  border-radius: 16px;
+  border: 1px solid #e7b8c7;
+  outline: none;
+}
+
+.review-modal textarea {
+  min-height: 120px;
+  resize: none;
+}
+
+.review-submit {
+  width: 100%;
+  padding: 13px;
+  border: none;
+  border-radius: 999px;
+  background: #5b001f;
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+}
+.success-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.45);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+    backdrop-filter:blur(4px);
+}
+
+.success-modal{
+    width:420px;
+    max-width:90%;
+    background:#fff8fb;
+    border-radius:28px;
+    padding:40px 32px;
+    text-align:center;
+    box-shadow:0 25px 60px rgba(0,0,0,.18);
+    animation:popup .35s ease;
+}
+
+.success-icon{
+    width:80px;
+    height:80px;
+    margin:auto;
+    border-radius:50%;
+    background:linear-gradient(135deg,#ff7aa5,#7a0028);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:2rem;
+    color:white;
+    margin-bottom:20px;
+}
+
+.success-modal h2{
+    color:#5a0022;
+    font-size:2rem;
+    margin-bottom:12px;
+}
+
+.success-modal p{
+    color:#7d5a66;
+    line-height:1.7;
+    margin-bottom:30px;
+}
+
+.success-modal button{
+    background:#65001f;
+    color:white;
+    border:none;
+    padding:14px 36px;
+    border-radius:999px;
+    font-weight:600;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.success-modal button:hover{
+    transform:translateY(-2px);
+    background:#7d0026;
+}
+
+@keyframes popup{
+    from{
+        transform:scale(.8);
+        opacity:0;
+    }
+    to{
+        transform:scale(1);
+        opacity:1;
+    }
 }

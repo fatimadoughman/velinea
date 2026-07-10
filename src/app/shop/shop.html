@@ -1,0 +1,100 @@
+<section class="shop-hero">
+  <div class="shop-hero-overlay"></div>
+  <div class="shop-hero-content">
+    <p class="section-label">Velinea Shop</p>
+    <h1 class="shop-hero-title">The Full Collection</h1>
+    <p class="shop-hero-sub">
+      Four signature creations, each handcrafted to order. Tap a piece to reserve it on WhatsApp.
+    </p>
+  </div>
+</section>
+
+<div class="marquee-strip">
+  <div class="marquee-track">
+    @for (item of marqueeItems; track $index) {
+      <span class="marquee-item">
+        {{ item }}
+        <span class="marquee-dot"></span>
+      </span>
+    }
+    @for (item of marqueeItems; track $index) {
+      <span class="marquee-item">
+        {{ item }}
+        <span class="marquee-dot"></span>
+      </span>
+    }
+  </div>
+</div>
+
+<section class="shop-filters">
+  <div class="filter-search">
+    <span class="filter-search-icon">✿</span>
+    <input
+      type="text"
+      placeholder="Search the collection..."
+      [(ngModel)]="searchTerm"
+    />
+  </div>
+
+  <div class="filter-pills">
+    @for (category of categories; track category) {
+      <button
+        type="button"
+        class="filter-pill"
+        [class.active]="activeCategory === category"
+        (click)="setCategory(category)"
+      >
+        {{ category }}
+      </button>
+    }
+  </div>
+</section>
+
+<section class="shop-grid-section">
+  @if (filteredProducts.length) {
+    <div class="garden-row">
+      <svg class="vine" viewBox="0 0 1000 140" preserveAspectRatio="none">
+        <path
+          d="M0,70 C120,15 230,125 350,70 C470,15 580,125 700,70 C800,20 900,120 1000,70"
+          fill="none"
+          stroke="var(--rose)"
+          stroke-width="1.5"
+          opacity="0.28"
+        />
+      </svg>
+
+      @for (product of filteredProducts; track product.title; let i = $index) {
+        <div class="bloom" [class.bloom-offset]="i % 2 === 1">
+          <div class="bloom-frame">
+            <span class="bloom-tag">{{ product.tag }}</span>
+            <img [src]="product.image" [alt]="product.title" />
+          </div>
+
+          <div class="bloom-info">
+            <div class="bloom-title">{{ product.title }}</div>
+            <div class="bloom-divider">✿</div>
+            <div class="bloom-sub">{{ product.sub }}</div>
+            <div class="bloom-price">${{ product.price }}</div>
+
+            <button
+              type="button"
+              class="bloom-order"
+              (click)="orderProduct(product)"
+            >
+              Reserve on WhatsApp
+            </button>
+          </div>
+        </div>
+      }
+    </div>
+  } @else {
+    <div class="empty-state">
+      <span class="empty-icon">✿</span>
+      <p class="empty-title">Nothing matches just yet</p>
+      <p class="empty-text">Try a different search, or browse another category.</p>
+      <button type="button" class="empty-reset" (click)="clearFilters()">
+        Clear filters
+      </button>
+    </div>
+  }
+</section>

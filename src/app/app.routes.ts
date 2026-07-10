@@ -5,5 +5,7 @@ export const routes: Routes = [
     path: '',
     loadComponent: () =>
       import('./home/home').then(m => m.Home)
-  }
+  },
+
+  
 ];

@@ -1,8 +1,15 @@
-<div class="cursor-dot" #cursorDot></div>
-<div class="cursor-ring" #cursorRing></div>
+<!-- <div class="cursor-dot" #cursorDot></div> -->
+<!-- <div class="cursor-ring" #cursorRing></div> -->
 
 <section class="hero">
-   <img class="hero-bg" src="vill2.jpeg" alt="Velinea cake background" />
+   <!-- <img class="hero-bg" src="vill.jpg" alt="Velinea cake background" /> -->
+   
+
+    
+    <img class="hero-bg desktop" src="vill.jpg" alt="">
+    <img class="hero-bg mobile" src="vill2.jpeg" alt="">
+
+
 
   <div class="hero-overlay"></div>
   <div class="petals">
@@ -46,7 +53,7 @@
   </div>
 </div>
 
-<section class="coming-soon-section">
+<!-- <section class="coming-soon-section">
   <div class="coming-bg-flower flower-left"></div>
   <div class="coming-bg-flower flower-right"></div>
   <div class="petals">
@@ -62,8 +69,8 @@
         </svg>
       </div>
     }
-  </div>
- <div class="coming-inner">
+  </div> -->
+ <!-- <div class="coming-inner">
 
     <span class="coming-label">
             VELINEA
@@ -99,8 +106,8 @@
         Luxury Cakes • Flower Cakes • Cookies • Sweet Bites
     </div>
 
-</div>
-<!-- <section class="collections" id="shop">
+</div> -->
+<section class="collections" id="shop">
   <div class="section-header reveal">
     <p class="section-label">Our Collections</p>
     <h2 class="section-title">Made for your sweetest moments</h2>
@@ -122,11 +129,16 @@
             <div class="card-title">{{ card.title }}</div>
             <div class="card-sub">{{ card.sub }}</div>
           </div>
-          <div class="card-arrow">→</div>
+          <!-- <div class="card-arrow">→</div> -->
         </div>
       </div>
     }
-  </div>
+ 
+  </div>   <div class="more-section">
+  <a routerLink="/shop" class="more-btn">
+     Shop Now →
+  </a>
+</div>
 </section>
 
 <section class="features">
@@ -145,14 +157,15 @@
     }
   </div>
 </section>
-
 <section class="testimonials" id="occasions">
   <div class="testimonials-inner">
     <p class="section-label reveal">What Clients Say</p>
     <h2 class="section-title reveal">Stories of <em>sweetness</em></h2>
 
     <div class="tcard">
-      <div class="stars">★★★★★</div>
+      <div class="stars">
+        {{ '★'.repeat(testimonials[testimonialIndex].rating) }}
+      </div>
 
       <blockquote class="tquote">
         "{{ testimonials[testimonialIndex].quote }}"
@@ -188,20 +201,91 @@
         }
       </div>
 
-      <button class="tctrl" type="button" (click)="nextTestimonial()">→</button>
+      <button class="tctrl" type="button" (click)="nextTestimonial(false)">→</button>
     </div>
+
+    <button class="review-open-btn" type="button" (click)="openReviewModal()">
+      Leave a Review
+    </button>
   </div>
 </section>
+
+@if (showReviewModal) {
+  <div class="review-overlay" (click)="closeReviewModal()">
+    <div class="review-modal" (click)="$event.stopPropagation()">
+      <button class="review-close" type="button" (click)="closeReviewModal()">×</button>
+
+      <h3>Leave a Review</h3>
+
+      <input
+        type="text"
+        placeholder="Your name"
+        [(ngModel)]="newReview.name"
+      />
+
+      <select [(ngModel)]="newReview.rating">
+        <option [ngValue]="5">★★★★★</option>
+        <option [ngValue]="4">★★★★</option>
+        <option [ngValue]="3">★★★</option>
+        <option [ngValue]="2">★★</option>
+        <option [ngValue]="1">★</option>
+      </select>
+
+      <textarea
+        placeholder="Write your review"
+        [(ngModel)]="newReview.quote">
+      </textarea>
+
+<button
+  type="button"
+  [disabled]="isSubmitting"
+  class="review-submit"
+  (click)="addReview()">
+  {{ isSubmitting ? 'Submitting...' : 'Submit Review' }}
+</button>
+    </div>
+  </div>
+}
 
 <div class="newsletter" id="about">
   <p class="section-label">Stay Sweet</p>
   <h3 class="section-title">Join our world of sweetness</h3>
   <p>Get new collections, seasonal specials, and behind-the-scenes stories.</p>
 
-  <form class="newsletter-form" (submit)="$event.preventDefault()">
-    <input type="email" placeholder="Your email address" />
-    <button type="submit" class="btn-subscribe">Subscribe</button>
-  </form>
+<form class="newsletter-form" (ngSubmit)="subscribe()">
+  <input
+    type="email"
+    [(ngModel)]="subscriberEmail"
+    name="email"
+    placeholder="Your email address"
+    required
+  />
+
+  <button type="submit" class="btn-subscribe">
+    Subscribe
+  </button>
+</form>
+@if (showSubscribeSuccess) {
+  <div class="success-overlay">
+    <div class="success-modal">
+
+      <div class="success-icon">💖</div>
+
+      <h2>You're In!</h2>
+
+      <p>
+        Thank you for subscribing to <strong>Velinea</strong>.<br>
+        You'll be the first to discover our newest cakes,
+        exclusive offers, and sweet surprises.
+      </p>
+
+      <button (click)="closeSuccessPopup()">
+        Continue
+      </button>
+
+    </div>
+  </div>
+}
 </div>
 
 <footer>
@@ -209,4 +293,4 @@
 
 
   <span class="footer-credit">Made with <span>♥</span> Velinea © 2026</span>
-</footer> -->
+</footer>

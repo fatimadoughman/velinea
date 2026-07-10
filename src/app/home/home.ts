@@ -7,20 +7,60 @@ import {
   OnDestroy,
   ViewChild
 } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { ReviewService } from '../services/review';
+import emailjs from '@emailjs/browser';
 @Component({
   selector: 'app-home',
   standalone: true,
   templateUrl: './home.html',
-  styleUrl: './home.scss',
-  imports: [CommonModule, RouterLink]
+  styleUrls: ['./home.scss'],
+  imports: [CommonModule, RouterLink, FormsModule]
 })
 
-export class Home {
+export class Home implements AfterViewInit, OnDestroy {
+  isSubmitting: boolean | undefined;
 
+constructor(private reviewService: ReviewService) {}
+async ngOnInit() {
+  const reviews = await this.reviewService.getReviews();
 
+  if (reviews.length > 0) {
+    this.testimonials = reviews as any[];
+  }
+}
+async addReview() {
+  if (!this.newReview.name.trim() || !this.newReview.quote.trim()) return;
 
+  this.isSubmitting = true;
+
+  const review = {
+    quote: this.newReview.quote,
+    name: this.newReview.name,
+    role: 'Customer',
+    init: this.newReview.name.charAt(0).toUpperCase(),
+    rating: Number(this.newReview.rating)
+  };
+
+  try {
+    await this.reviewService.addReview(review);
+
+    this.testimonials.unshift(review);
+    this.testimonialIndex = 0;
+
+    this.newReview = {
+      name: '',
+      quote: '',
+      rating: 5
+    };
+
+    this.closeReviewModal();
+  } finally {
+    this.isSubmitting = false;
+  }
+}
   @ViewChild('cursorDot') cursorDot!: ElementRef<HTMLDivElement>;
   @ViewChild('cursorRing') cursorRing!: ElementRef<HTMLDivElement>;
 
@@ -53,7 +93,7 @@ export class Home {
 
   cards = [
     {
-      title: 'Celebration Cakes',
+      title: ' Cupcake Boquites',
       sub: 'For every milestone',
       tag: 'Bestseller',
       image: 'boq.jpg'
@@ -95,26 +135,7 @@ export class Home {
     }
   ];
 
-  testimonials = [
-    {
-      name: 'Amelia R.',
-      role: 'Bride',
-      init: 'A',
-      quote: 'Velinea made our wedding cake absolutely breathtaking.'
-    },
-    {
-      name: 'Sofia K.',
-      role: 'Regular Customer',
-      init: 'S',
-      quote: 'Every single creation has been flawless and elegant.'
-    },
-    {
-      name: 'James L.',
-      role: 'Corporate Client',
-      init: 'J',
-      quote: 'The presentation is always beautiful and professional.'
-    }
-  ];
+
 petalPaths = [
   'M10,0 C14,3 14,7 10,10 C6,13 2,11 0,7 C-2,3 2,0 10,0Z',
   'M8,0 C12,2 13,8 8,11 C3,14 -1,9 1,4 C3,0 6,-1 8,0Z',
@@ -217,23 +238,91 @@ ngAfterViewInit(): void {
     this.startTestimonials();
   }
 
-  nextTestimonial(reset = true): void {
-    this.testimonialIndex =
-      (this.testimonialIndex + 1) % this.testimonials.length;
 
-    if (reset) this.resetTimer();
+
+
+
+newReview = {
+  name: '',
+  quote: '',
+  rating: 5
+};
+
+
+testimonials = [
+  {
+    quote: 'I have ordered before launching the website and I was very satisfied with the quality of the products and the service. I highly recommend this bakery to anyone looking for delicious treats!',
+    name: 'Rita',
+    role: 'Regular Customer',
+    init: 'R',
+    rating: 5
+  },
+    {
+    quote: 'كنت ناطرة ليفتحو واطلب لماما وعنجد كتير انبسطت بالبوكيه',
+    name: 'Sarah',
+    role: 'Regular Customer',
+    init: 'S',
+    rating: 5
   }
+];
 
-  prevTestimonial(): void {
-    this.testimonialIndex =
-      (this.testimonialIndex - 1 + this.testimonials.length) %
-      this.testimonials.length;
 
-    this.resetTimer();
-  }
+showReviewModal = false;
 
-  goTestimonial(index: number): void {
-    this.testimonialIndex = index;
-    this.resetTimer();
-  }
+openReviewModal() {
+  this.showReviewModal = true;
 }
+
+closeReviewModal() {
+  this.showReviewModal = false;
+}
+
+showSubscribeSuccess = false;
+
+closeSuccessPopup() {
+  this.showSubscribeSuccess = false;
+}
+prevTestimonial() {
+  this.testimonialIndex =
+    (this.testimonialIndex - 1 + this.testimonials.length) %
+    this.testimonials.length;
+}
+
+nextTestimonial(p0: boolean) {
+  this.testimonialIndex =
+    (this.testimonialIndex + 1) % this.testimonials.length;
+}
+
+goTestimonial(i: number) {
+  this.testimonialIndex = i;
+}
+subscriberEmail = '';
+
+isSubscribing = false;
+
+async subscribe() {
+  if (!this.subscriberEmail.trim()) return;
+
+  this.isSubscribing = true;
+
+    await this.reviewService.addSubscriber(this.subscriberEmail);
+
+this.showSubscribeSuccess = true;
+    this.subscriberEmail = '';
+    // await emailjs.send(
+//   'service_ogsj9ur',
+//   'template_wwfpnjj',
+//   {
+//     email: this.subscriberEmail,
+//     to_email: this.subscriberEmail
+//   },
+//   'rhXDWRyv2BHQAgzbm'
+// );
+  //   alert('Thank you for subscribing!');
+  // } catch (error) {
+  //   console.error(error);
+  //   alert('Something went wrong. Please try again.');
+  // } finally {
+  //   this.isSubscribing = false;
+  // }
+  }}
