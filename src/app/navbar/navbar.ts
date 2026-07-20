@@ -17,10 +17,12 @@ export class Navbar {
 
   navLinks = [
     { label: 'Shop',      path: '/shop'     },
-    // { label: 'Customize', path: '/customize' },
+    { label: 'EventPlanner', path: '/eventplanner' },
     { label: 'About',     path: '/about'    },
   ];
-
+menu=[ 
+    { label: 'About',     path: '/about'    },
+  ]
   @HostListener('window:scroll')
   onScroll() {
     const scrollTop = window.scrollY;

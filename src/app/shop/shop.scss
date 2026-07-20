@@ -20,6 +20,36 @@
   box-sizing: border-box;
 }
 
+/* FOOTER */
+footer {
+  padding: 15px 8%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+
+  background: var(--cream);
+  border-top: 1px solid rgba(71, 0, 22, 0.08);
+}
+
+.footer-wordmark {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 22px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--velvet);
+}
+
+.footer-credit {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.footer-credit span {
+  color: var(--rose);
+}
+
 h1, h2, h3 {
   font-family: "Cormorant Garamond", serif;
 }

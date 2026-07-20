@@ -1,17 +1,17 @@
 <!-- <div class="cursor-dot" #cursorDot></div> -->
 <!-- <div class="cursor-ring" #cursorRing></div> -->
-
+<!-- <app-navbar></app-navbar> -->
 <section class="hero">
    <!-- <img class="hero-bg" src="vill.jpg" alt="Velinea cake background" /> -->
    
 
     
-    <img class="hero-bg desktop" src="vill.jpg" alt="">
-    <img class="hero-bg mobile" src="vill2.jpeg" alt="">
+    <img class="hero-bg desktop" src="boq1.jpg"  alt="Velinea cake background">
+    <img class="hero-bg mobile"  src="ba.png" alt="">
 
 
 
-  <div class="hero-overlay"></div>
+  <!-- <div class="hero-overlay"></div> -->
   <div class="petals">
     @for (petal of petals; track petal.id) {
       <div class="petal" [ngStyle]="petal.style">
@@ -26,23 +26,25 @@
       </div>
     }
   </div>
+<div class="hero-text desktop">
+  <span class="hero-small">CELEBRATE WITH</span>
 
-  <div class="hero-content">
-    <p class="section-label">Welcome to Velinea</p>
+  <h1>VELINEA</h1>
 
-    <h1 class="hero-title">
-      Luxury Cakes<br />
-      Made with Love
-    </h1>
+  <p class="subtitle">
+    Creating Beautiful Memories
+  </p>
 
-    <p class="hero-sub">
-      Handcrafted cakes, cookies, and sweet bites for your most beautiful moments.
-    </p>
-
-    <!-- <a href="#shop" class="btn-hero">Explore Collection ↗</a> -->
+  <div class="simple-line">
+    <span></span>
+    <i>✦</i>
+    <span></span>
   </div>
+
+
+</div>
 </section>
-<div class="marquee-strip">
+<div class="marquee-strip" >
   <div class="marquee-track">
     @for (item of marqueeItems; track $index) {
       <span class="marquee-item">
@@ -107,7 +109,92 @@
     </div>
 
 </div> -->
-<section class="collections" id="shop">
+
+<section class="crazy-deals" id="deals">
+  <div class="deals-decoration deals-decoration-left"></div>
+  <div class="deals-decoration deals-decoration-right"></div>
+
+  <div class="section-header reveal">
+    <p class="section-label">Limited-Time Offers</p>
+
+    <h2 class="section-title">
+      Our <em>Crazy Deals</em>
+    </h2>
+
+    <p class="section-sub">
+      Sweet prices on handcrafted treats. Available for a limited time only.
+    </p>
+  </div>
+
+  <div class="deals-grid">
+    @for (deal of crazyDeals; track deal.title; let i = $index) {
+      <article
+        class="deal-card reveal"
+        [class.featured-deal]="deal.featured"
+        [style.transition-delay.s]="i * 0.12"
+      >
+        @if (deal.badge) {
+          <span class="deal-badge">
+            {{ deal.badge }}
+          </span>
+        }
+
+        <div class="deal-image-wrap">
+          <img [src]="deal.image" [alt]="deal.title" />
+
+          <!-- <div class="deal-discount">
+            {{ deal.discount }}
+          </div> -->
+        </div>
+
+        <div class="deal-content">
+          <p class="deal-category">{{ deal.category }}</p>
+
+          <h3 class="deal-title">
+            {{ deal.title }}
+          </h3>
+
+          <p class="deal-description">
+            {{ deal.description }}
+          </p>
+
+       <div class="deal-price-row">
+
+  <div class="deal-prices">
+
+    <span class="deal-old-price">
+      ${{ deal.oldPrice }}
+    </span>
+
+    <span class="deal-new-price">
+      ${{ deal.price }}
+    </span>
+
+  </div>
+
+  <div class="deal-save-pill">
+      Save ${{ deal.oldPrice - deal.price }}
+  </div>
+
+</div>
+
+
+          <a routerLink="/shop" class="deal-button">
+            Get This Deal
+            <span>→</span>
+          </a>
+        </div>
+      </article>
+    }
+  </div>
+
+  <p class="deals-note">
+    Limited quantities available · Pre-order may be required
+  </p>
+</section>
+
+<!-- our collections -->
+<!-- <section class="collections" id="shop">
   <div class="section-header reveal">
     <p class="section-label">Our Collections</p>
     <h2 class="section-title">Made for your sweetest moments</h2>
@@ -129,7 +216,7 @@
             <div class="card-title">{{ card.title }}</div>
             <div class="card-sub">{{ card.sub }}</div>
           </div>
-          <!-- <div class="card-arrow">→</div> -->
+         <div class="card-arrow">→</div> 
         </div>
       </div>
     }
@@ -156,7 +243,7 @@
       </div>
     }
   </div>
-</section>
+</section> -->
 <section class="testimonials" id="occasions">
   <div class="testimonials-inner">
     <p class="section-label reveal">What Clients Say</p>
@@ -294,3 +381,5 @@
 
   <span class="footer-credit">Made with <span>♥</span> Velinea © 2026</span>
 </footer>
+
+

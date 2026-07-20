@@ -1,0 +1,114 @@
+<!-- <section class="promo-section" id="promotions"> -->
+  <!-- <div class="promo-decoration promo-decoration-left"></div>
+  <div class="promo-decoration promo-decoration-right"></div> -->
+
+  <!-- <div class="section-header reveal">
+    <p class="section-label">Limited Time Offer</p>
+
+    <h2 class="section-title">
+      Exclusive <em>Promotions</em>
+    </h2>
+
+    <p class="section-sub">
+      Choose the package that fits your celebration — every tier is crafted with the same Velinea elegance.
+    </p>
+  </div> -->
+
+  <!-- <div class="promo-grid">
+    @for (promo of promotions; track promo.tier; let i = $index) {
+      <article
+        class="promo-card reveal"
+        [class.featured-promo]="promo.featured"
+        [style.transition-delay.s]="i * 0.12"
+      >
+        @if (promo.badge) {
+          <span class="promo-badge">
+            {{ promo.badge }}
+          </span>
+        }
+
+        <div class="promo-image-wrap">
+          <img [src]="promo.image" [alt]="promo.tier" />
+          <span class="promo-tier">{{ promo.tier }}</span>
+        </div>
+
+        <div class="promo-content">
+          <ul class="promo-includes">
+            @for (item of promo.includes; track item) {
+              <li><span>✦</span>{{ item }}</li>
+            }
+          </ul>
+
+          
+      <a      class="promo-button"
+            [href]="'https://wa.me/96176382904?text=' + promo.whatsappText"
+            target="_blank"
+            rel="noopener"
+          >
+            Chat on WhatsApp
+            <span>→</span>
+          </a>
+        </div>
+      </article>
+    }
+  </div>  -->
+<!-- </section> -->
+
+<section class="occasion-section" style="margin-top: 100px;">
+  <div class="section-heading">
+    <p class="section-label">Celebrate Every Moment</p>
+
+    <h2>
+      Events Made
+      <em>Unforgettable</em>
+    </h2>
+
+    <p>
+      Choose your occasion and let Velinea transform it into a beautiful
+      experience.
+    </p>
+  </div>
+<div class="occasion-grid">
+  @for (occasion of occasions; track occasion.title) {
+    <article class="occasion-card">
+      <div class="occasion-image">
+        <img [src]="occasion.image" [alt]="occasion.title" />
+        <div class="occasion-overlay"></div>
+
+        <span class="occasion-number">{{ occasion.number }}</span>
+
+        <div class="occasion-text">
+          <h3>{{ occasion.title }}</h3>
+          <p>{{ occasion.description }}</p>
+
+          <!-- <button type="button" class="occasion-btn" (click)="selectOccasion(occasion.title)">
+            Discover
+            <span>→</span>
+          </button> -->
+        </div>
+      </div>
+    </article>
+  }
+</div>
+</section>
+
+
+
+
+
+
+<section class="planner-cta">
+  <div>
+    <p>Ready to celebrate?</p>
+
+  </div>
+
+  <a
+    href="https://wa.me/96176382904"
+    target="_blank"
+    rel="noopener"
+  >
+    Chat on WhatsApp
+    <span>→</span>
+  </a>
+</section>

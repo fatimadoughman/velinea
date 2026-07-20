@@ -32,39 +32,68 @@ export class Shop {
   ];
 
   products: Product[] = [
-    {
-      title: 'Rose Velvet Cake',
-      tag: 'Best Seller',
-      category: 'Cakes',
-      sub: 'Signature flower cake, 1kg',
-      price: '45',
-      // TODO: replace with your uploaded product photo path, e.g. 'assets/shop/rose-velvet.jpg'
-      image: 'vill.jpg'
-    },
-    {
-      title: 'Blush Cookies Box',
-      tag: 'New',
-      category: 'Cookies',
-      sub: 'Box of 12 handcrafted cookies',
-      price: '18',
-      image: 'vill2.jpeg'
-    },
-    {
-      title: 'Velinea Sweet Bites',
-      tag: 'Limited',
-      category: 'Sweet Bites',
-      sub: 'Assorted mini treats, 24 pcs',
-      price: '25',
-      image: 'vill.jpg'
-    },
-    {
-      title: 'Classic Wine Cake',
-      tag: 'Signature',
-      category: 'Cakes',
-      sub: 'Rich dark chocolate cake, 1.2kg',
-      price: '50',
-      image: 'vill2.jpeg'
-    }
+
+  {
+    title: '50 Roses Bouquet',
+    tag: 'Opening Offer',
+    category: 'Flowers',
+    sub: '50 premium roses • Available in any color you choose',
+    price: '45',
+  
+    image: 'boqu2.png'
+  },
+  
+  {
+    title: '100 Roses Bouquet',
+    tag: 'Opening Offer',
+    category: 'Flowers',
+    sub: '100 premium roses • Available in any color you choose',
+    price: '90',
+
+    image: 'boqu1.JPG'
+  },
+  {
+    title: '500 Roses Bouquet',
+    tag: 'Luxury Collection',
+    category: 'Flowers',
+    sub: '500 premium roses • Available in any color you choose',
+    price: '450',
+    image: 'boqu3.png'
+  },
+
+  {
+    title: 'Custom Bouquet',
+    tag: 'Create Your Own',
+    category: 'Flowers',
+    sub: 'Choose any number of roses, colors, wrapping, and accessories',
+    price: '15+',
+  
+    image: 'boqu4.png'
+  }
+,{
+    title: 'Book Bouquet',
+    tag: 'A Gift for Every Book Lover',
+    category: 'Gifts',
+    sub: 'A unique bouquet featuring your favorite books beautifully arranged with premium flowers and elegant wrapping. Perfect for birthdays, graduations, anniversaries, or any special occasion.',
+    price: '25+',
+    image: 'books.jpeg'
+  },
+  {
+    title: 'Baby Gift Crate',
+    tag: 'Welcome Little One',
+    category: 'Baby Gifts',
+    sub: 'A beautifully arranged wooden crate filled with adorable baby essentials, soft toys, flowers, and personalized decorations. Customize the name, colors, clothing, and accessories.',
+    price: '90+',
+    image: 'baby1.jpeg'
+  },
+  {
+    title: 'Luxury Gift Basket',
+    tag: 'Thoughtfully Curated',
+    category: 'Gift Baskets',
+    sub: 'A premium gift basket filled with luxury skincare, beauty products, flowers, and elegant decorations. Perfect for birthdays, bridal showers, Mother’s Day, or corporate gifting.',
+    price: '35+',
+    image: 'bask1.jpeg'
+  },
   ];
 
   // built from the products above, plus an "All" option pinned first

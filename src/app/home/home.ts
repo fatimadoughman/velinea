@@ -12,12 +12,13 @@ import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { ReviewService } from '../services/review';
 import emailjs from '@emailjs/browser';
+import { Navbar } from "../navbar/navbar";
 @Component({
   selector: 'app-home',
   standalone: true,
   templateUrl: './home.html',
   styleUrls: ['./home.scss'],
-  imports: [CommonModule, RouterLink, FormsModule]
+  imports: [CommonModule, RouterLink, FormsModule, Navbar]
 })
 
 export class Home implements AfterViewInit, OnDestroy {
@@ -29,8 +30,23 @@ async ngOnInit() {
 
   if (reviews.length > 0) {
     this.testimonials = reviews as any[];
-  }
+  }  setInterval(() => {
+    this.taglineSwapping = true;
+    setTimeout(() => {
+      this.taglineIndex = (this.taglineIndex + 1) % this.taglines.length;
+      this.taglineSwapping = false;
+    }, 400);
+  }, 3200);
 }
+@ViewChild('heroContent') heroContent!: ElementRef;
+
+taglines = ['Handcrafted Cakes', 'Flower Bouquets', 'Sweet Celebrations', 'Made With Love'];
+taglineIndex = 0;
+taglineSwapping = false;
+
+
+
+
 async addReview() {
   if (!this.newReview.name.trim() || !this.newReview.quote.trim()) return;
 
@@ -173,6 +189,7 @@ petals = Array.from({ length: 28 }, (_, i) => {
   onMouseMove(event: MouseEvent): void {
     this.mx = event.clientX;
     this.my = event.clientY;
+    
   }
 
 
@@ -325,4 +342,46 @@ this.showSubscribeSuccess = true;
   // } finally {
   //   this.isSubscribing = false;
   // }
-  }}
+  }
+
+crazyDeals = [
+   {
+    title: '50 Roses Bouquet',
+    category: 'Opening Offer',
+    description: 'A luxury bouquet of 50 premium roses. Available in any color of your choice. Limited-time opening offer.',
+    image: 'boqu1.JPG',
+    oldPrice: 70,
+    price: 45,
+    discount: '-36%',
+    badge: 'Opening Offer',
+    featured: true
+  },
+   
+  {
+
+  title: 'Luxury Event Setup',
+  category: 'Opening Offer',
+  description: 'A complete luxury celebration setup with premium floral arrangements. Choose your preferred flower colors or select a different setup design to match your occasion.',
+  image: 'setup.jpeg',
+  oldPrice: 500,
+  price: 350,
+  discount: '-30%',
+  badge: 'Opening Offer',
+  featured: true
+},
+{
+  title: 'Luxury Baby Basket',
+  category: 'Baby Gifts',
+  description: 'Personalized luxury baby basket with baby clothes, plush toy, fresh flowers, balloon, and custom baby name. Available in pink, blue, beige, or any color of your choice.',
+  image: 'baby.png',
+  oldPrice: 140,
+  price: 90,
+  discount: '-22%',
+  badge: 'Opening Offer',
+  featured: true
+}
+];
+
+
+
+}

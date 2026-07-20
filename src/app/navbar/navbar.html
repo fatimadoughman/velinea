@@ -14,7 +14,7 @@
     </a>
 
     <!-- Links Desktop -->
-    <ul class="nav-links">
+    <ul class="nav-links ">
       @for (link of navLinks; track link.path) {
         <li>
           <a [routerLink]="link.path"
@@ -26,9 +26,24 @@
         </li>
       }
     </ul>
-
+<div class="shops">
+    <a routerLink="/shop"
+             routerLinkActive="active"
+             class="nav-link">
+            Shop
+            <span class="link-line"></span>
+          </a>
+             <a routerLink="/eventplanner"
+             routerLinkActive="active"
+             class="nav-link">
+            Events
+            <span class="link-line"></span>
+          </a>
+</div>
     <!-- CTA -->
-    <button class="cta-btn">Order Now ↗</button>
+    <a href="https://wa.me/96176382904" target="_blank">
+  <button class="cta-btn">Contact Us ↗</button>
+</a>
 
     <!-- Mobile Hamburger -->
     <button class="hamburger" (click)="toggleMenu()" [class.open]="isMenuOpen()">
@@ -40,7 +55,7 @@
   <!-- Mobile Menu -->
   @if (isMenuOpen()) {
     <div class="mobile-menu">
-      @for (link of navLinks; track link.path) {
+      @for (link of menu; track link.path) {
         <a [routerLink]="link.path"
            routerLinkActive="active"
            (click)="toggleMenu()"
@@ -48,7 +63,7 @@
           {{ link.label }}
         </a>
       }
-      <button class="cta-btn mobile-cta">Order Now ↗</button>
+      <button class="cta-btn mobile-cta">Contact Us ↗</button>
     </div>
   }
 

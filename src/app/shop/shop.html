@@ -2,9 +2,10 @@
   <div class="shop-hero-overlay"></div>
   <div class="shop-hero-content">
     <p class="section-label">Velinea Shop</p>
-    <h1 class="shop-hero-title">The Full Collection</h1>
+    <h1 class="shop-hero-title">Opening Collection</h1>
     <p class="shop-hero-sub">
-      Four signature creations, each handcrafted to order. Tap a piece to reserve it on WhatsApp.
+      Crazy deals!
+      Tap a piece to reserve it on WhatsApp.
     </p>
   </div>
 </section>
@@ -64,9 +65,9 @@
       </svg>
 
       @for (product of filteredProducts; track product.title; let i = $index) {
-        <div class="bloom" [class.bloom-offset]="i % 2 === 1">
+        <div class="bloom" [class.bloom-offset]="i % 2 === 1" style="gap: 3rem;">
           <div class="bloom-frame">
-            <span class="bloom-tag">{{ product.tag }}</span>
+            <!-- <span class="bloom-tag">{{ product.tag }}</span> -->
             <img [src]="product.image" [alt]="product.title" />
           </div>
 
@@ -98,3 +99,9 @@
     </div>
   }
 </section>
+<footer>
+  <span class="footer-wordmark">Velinea</span>
+
+
+  <span class="footer-credit">Made with <span>♥</span> Velinea © 2026</span>
+</footer>
