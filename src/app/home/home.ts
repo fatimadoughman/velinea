@@ -11,14 +11,13 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { ReviewService } from '../services/review';
-import emailjs from '@emailjs/browser';
-import { Navbar } from "../navbar/navbar";
+
 @Component({
   selector: 'app-home',
   standalone: true,
   templateUrl: './home.html',
   styleUrls: ['./home.scss'],
-  imports: [CommonModule, RouterLink, FormsModule, Navbar]
+  imports: [CommonModule, RouterLink, FormsModule]
 })
 
 export class Home implements AfterViewInit, OnDestroy {
