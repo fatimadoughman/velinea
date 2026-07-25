@@ -20,20 +20,27 @@
       "architect": {
         "build": {
           "builder": "@angular/build:application",
-          "options": {
-            "browser": "src/main.ts",
-            "tsConfig": "tsconfig.app.json",
-            "inlineStyleLanguage": "scss",
-            "assets": [
-              {
-                "glob": "**/*",
-                "input": "public"
-              }
-            ],
-            "styles": [
-              "src/styles.scss"
-            ]
-          },
+     "options": {
+  "browser": "src/main.ts",
+  "tsConfig": "tsconfig.app.json",
+  "inlineStyleLanguage": "scss",
+
+  "outputPath": {
+    "base": "docs",
+    "browser": ""
+  },
+
+  "assets": [
+    {
+      "glob": "**/*",
+      "input": "public"
+    }
+  ],
+
+  "styles": [
+    "src/styles.scss"
+  ]
+},
           "configurations": {
             "production": {
               "budgets": [
@@ -42,12 +49,20 @@
                   "maximumWarning": "500kB",
                   "maximumError": "1MB"
                 },
-          {
-  "type": "anyComponentStyle",
-  "maximumWarning": "50kB",
-  "maximumError": "100kB"
-}
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "50kB",
+                  "maximumError": "100kB"
+                }
               ],
+              "optimization": {
+                "scripts": true,
+                "styles": {
+                  "minify": true,
+                  "inlineCritical": false
+                },
+                "fonts": false
+              },
               "outputHashing": "all"
             },
             "development": {

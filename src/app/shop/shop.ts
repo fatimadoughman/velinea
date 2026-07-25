@@ -156,7 +156,7 @@ export class Shop {
   tag: 'Add elegance to your celebration',
   category: 'Mirror',
   sub: 'A stylish decorative mirror that adds depth, luxury, and elegance to any event setup. Perfect for welcome entrances, photo corners, bridal showers, engagements, birthdays, and weddings.',
-  price: '45',
+  price: '35',
   image: 'mirror1.jpeg'
 },
 {
