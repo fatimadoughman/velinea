@@ -21,4 +21,5 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./eventplanner/eventplanner').then(m => m.Eventplanner )
   },
+  
 ];

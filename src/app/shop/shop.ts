@@ -151,30 +151,7 @@ export class Shop {
   
     image: 'bouq1.jpeg'
   },
-{
-  title: 'Mirror A',
-  tag: 'Add elegance to your celebration',
-  category: 'Mirror',
-  sub: 'A stylish decorative mirror that adds depth, luxury, and elegance to any event setup. Perfect for welcome entrances, photo corners, bridal showers, engagements, birthdays, and weddings.',
-  price: '35',
-  image: 'mirror1.jpeg'
-},
-{
-  title: 'Mirror B',
-  tag: 'Add elegance to your celebration',
-  category: 'Mirror',
-  sub: 'A stylish decorative mirror that adds depth, luxury, and elegance to any event setup. Perfect for welcome entrances, photo corners, bridal showers, engagements, birthdays, and weddings.',
-  price: '25',
-  image: 'mirror3.jpeg'
-},
-{
-  title: 'Mirror C',
-  tag: 'Add elegance to your celebration',
-  category: 'Mirror',
-  sub: 'A stylish decorative mirror that adds depth, luxury, and elegance to any event setup. Perfect for welcome entrances, photo corners, bridal showers, engagements, birthdays, and weddings.',
-  price: '35',
-  image: 'mirror4.jpeg'
-},
+
   ];
 
   // built from the products above, plus an "All" option pinned first
