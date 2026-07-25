@@ -843,8 +843,8 @@ footer {
 }
 
 .hero-bg {
-    width: 100%;
-    height: auto;
+    // width: 100%;
+    // height: 100%;
     display: block;
     position: relative;
 } 
@@ -1202,7 +1202,7 @@ display:none;
     display: block;
     object-fit: cover;
     object-position: center center;
-    /* height: 1000px; */
+    // height: 1000px; 
   }
 
   /* .hero-overlay { */
@@ -1895,27 +1895,21 @@ nav {
 
 .hero {
   width: 100%;
-  // min-height: calc(50vh - 72px);
+  height: clamp(360px, 42vw, 620px);
+  min-height: 360px;
   margin-top: 72px;
-  padding: clamp(36px, 7vw, 90px) clamp(20px, 8vw, 120px);
-  position: relative;
-  display: flex;
-  align-items: center;
+  padding: 0;
   overflow: hidden;
-  isolation: isolate;
 }
 
 .hero-bg {
+
   position: absolute;
   inset: 0;
-  display: block;
   width: 100%;
   height: 100%;
-  max-width: none;
- 
-  z-index: 0;
+  object-fit: cover;
 }
-
 .hero-overlay {
   position: absolute;
   inset: 0;
@@ -1954,14 +1948,16 @@ nav {
     transform:translate(-50%,-50%);
     width:520px;
     text-align:center;
+    margin-top: 20px;
 }
 
 @media(max-width:768px){
     .hero-text{
         top:18%;
-        // left:50%;
+        left:50%;
         transform:translateX(-50%);
         width:90%;
+        margin-top: 20px;
     }
 }
 
@@ -2115,16 +2111,21 @@ nav {
     display: none !important;
   }
 
-  .mobile {
-    display: block !important;
+
+  .hero {
+    height: clamp(420px, 115vw, 680px);
+    min-height: 420px;
+    margin-top: 64px;
   }
 
   .hero-bg.mobile {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: 62% center;
-  }
+
+    /* Move image downward */
+    object-position: center 40%;
+}
 
   .hero-overlay {
     background: linear-gradient(
@@ -2176,10 +2177,14 @@ nav {
 }
 
 @media (max-width: 430px) {
+.hero-bg.mobile {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 
-  .hero-bg.mobile {
-    object-position: 66% center;
-  }
+    /* Move image downward */
+    object-position: center 25%;
+}
 
   .card-grid {
     gap: 12px;
@@ -2299,7 +2304,7 @@ nav {
 
 .hero-text {
   position: absolute;
-  top: 20%;
+  top: 40%;
   left: 34%;
   transform: translateX(-50%);
   z-index: 10;
