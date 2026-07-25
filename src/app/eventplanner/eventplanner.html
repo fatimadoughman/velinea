@@ -92,8 +92,26 @@
 </div>
 </section>
 
+<section class="gallery-section">
+  <div class="section-heading">
+    <p class="section-label">Our Portfolio</p>
 
+    <h2>
+      Our
+      <em>Deals</em>
+    </h2>
 
+    <p>Swipe through some of our favorite celebrations.</p>
+  </div>
+
+  <div class="gallery-scroll">
+    @for (image of galleryImages; track image) {
+      <div class="gallery-card">
+        <img [src]="image" alt="Event Decoration" />
+      </div>
+    }
+  </div>
+</section>
 
 
 
@@ -104,7 +122,7 @@
   </div>
 
   <a
-    href="https://wa.me/96176382904"
+    href="https://wa.me/96179423997"
     target="_blank"
     rel="noopener"
   >

@@ -46,6 +46,12 @@ export class Eventplanner {
       image: 'inv.jpeg'
     },
   ];
+  galleryImages: string[] = [
+'event1.jpeg','birthday.jpeg','event2.jpeg',
+'event4.jpeg','event3.jpeg',
+
+ 
+];
 
   services = [
     {
@@ -156,7 +162,7 @@ Vision:
 ${this.plannerForm.message || 'No additional information'}
     `.trim();
 
-    const whatsappNumber = '96100000000';
+    const whatsappNumber = '961423997';
 
     const whatsappUrl =
       `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;

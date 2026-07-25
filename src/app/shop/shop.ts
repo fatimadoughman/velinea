@@ -22,7 +22,7 @@ export class Shop {
 
   // TODO: replace with your real WhatsApp business number, country code + number, no + or spaces
   // e.g. Lebanon number 03 123 456 -> '9613123456'
-  whatsappNumber = '96176382904';
+  whatsappNumber = '96179423997';
 
   marqueeItems: string[] = [
     'Limited Edition',
@@ -67,7 +67,6 @@ export class Shop {
     category: 'Flowers',
     sub: 'Choose any number of roses, colors, wrapping, and accessories',
     price: '15+',
-  
     image: 'boqu4.png'
   }
 ,{
@@ -81,19 +80,101 @@ export class Shop {
   {
     title: 'Baby Gift Crate',
     tag: 'Welcome Little One',
-    category: 'Baby Gifts',
+    category: 'Gifts',
     sub: 'A beautifully arranged wooden crate filled with adorable baby essentials, soft toys, flowers, and personalized decorations. Customize the name, colors, clothing, and accessories.',
     price: '90+',
-    image: 'baby1.jpeg'
+    image: 'baby.png'
   },
   {
     title: 'Luxury Gift Basket',
     tag: 'Thoughtfully Curated',
-    category: 'Gift Baskets',
+    category: 'Gifts',
     sub: 'A premium gift basket filled with luxury skincare, beauty products, flowers, and elegant decorations. Perfect for birthdays, bridal showers, Mother’s Day, or corporate gifting.',
     price: '35+',
     image: 'bask1.jpeg'
   },
+  {
+  title: 'Floral Cupcake',
+  tag: 'Edible Elegance',
+  category: 'Desserts',
+  sub: 'A handcrafted gourmet cupcake decorated with delicate buttercream flowers. Perfect for birthdays, bridal showers, baby showers, weddings, and luxury dessert tables.',
+  price: '6',
+  image: 'cupcake.jpeg'
+},
+{
+  title: 'Luxury Floral Gift Box',
+  tag: 'Elegant Surprises',
+  category: 'Gifts',
+  sub: 'A luxurious floral gift arrangement featuring premium flowers beautifully styled around carefully selected gifts. Ideal for birthdays, anniversaries, Mother’s Day, or special celebrations.',
+  price: 'customized',
+  image: 'gift1.jpeg'
+},
+{
+  title: 'Beauty Gift Basket',
+  tag: 'Luxury Collection',
+  category: 'Gifts',
+  sub: 'A premium wicker gift basket filled with luxury beauty products, fresh roses, and elegant floral arrangements. Perfect for birthdays, bridal showers, graduations, and unforgettable gifts.',
+  price: '30+',
+  image: 'gist2.jpeg'
+},
+// {
+//   title: 'Bow Foil Balloon',
+//   tag: 'Elegant Decor',
+//   category: 'Balloons',
+//   sub: 'A luxury oversized bow-shaped foil balloon that adds a chic and modern touch to birthdays, baby showers, bridal showers, engagements, and celebration setups.',
+//   price: '12+',
+//   image: 'ballon1.jpeg'
+// },
+// {
+//   title: 'Heart Foil Balloons',
+//   tag: 'Romantic Touch',
+//   category: 'Balloons',
+//   sub: 'Premium heart-shaped foil balloons available in elegant metallic finishes. Perfect for romantic surprises, engagements, weddings, anniversaries, and luxury event decorations.',
+//   price: '8+',
+//   image: 'ballon2.jpeg'
+// },
+{
+    title: '7 Roses Cupcake Bouquet',
+    tag: 'Opening Offer',
+    category: 'Flowers',
+    sub: '7 premium roses • Available in any color you choose',
+    price: '40',
+  
+    image: 'bouq.jpeg'
+  },
+  {
+    title: '7 Roses cupcake Bouquet',
+    tag: 'Opening Offer',
+    category: 'Flowers',
+    sub: '7 premium roses • Available in any color you choose',
+    price: '40',
+  
+    image: 'bouq1.jpeg'
+  },
+{
+  title: 'Mirror A',
+  tag: 'Add elegance to your celebration',
+  category: 'Mirror',
+  sub: 'A stylish decorative mirror that adds depth, luxury, and elegance to any event setup. Perfect for welcome entrances, photo corners, bridal showers, engagements, birthdays, and weddings.',
+  price: '45',
+  image: 'mirror1.jpeg'
+},
+{
+  title: 'Mirror B',
+  tag: 'Add elegance to your celebration',
+  category: 'Mirror',
+  sub: 'A stylish decorative mirror that adds depth, luxury, and elegance to any event setup. Perfect for welcome entrances, photo corners, bridal showers, engagements, birthdays, and weddings.',
+  price: '25',
+  image: 'mirror3.jpeg'
+},
+{
+  title: 'Mirror C',
+  tag: 'Add elegance to your celebration',
+  category: 'Mirror',
+  sub: 'A stylish decorative mirror that adds depth, luxury, and elegance to any event setup. Perfect for welcome entrances, photo corners, bridal showers, engagements, birthdays, and weddings.',
+  price: '35',
+  image: 'mirror4.jpeg'
+},
   ];
 
   // built from the products above, plus an "All" option pinned first
