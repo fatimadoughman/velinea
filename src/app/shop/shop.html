@@ -1,46 +1,217 @@
-<!-- <div class="cursor-dot" #cursorDot></div>
- <div class="cursor-ring" #cursorRing></div> -->
+<!-- =====================================
+     DESKTOP HERO
+===================================== -->
+
 <section class="shop-hero">
   <div class="shop-hero-overlay"></div>
+
   <div class="shop-hero-content">
     <p class="section-label">Velinea Shop</p>
-    <h1 class="shop-hero-title">Opening Collection</h1>
+
+    <h1 class="shop-hero-title">
+      Welcome to the world of creativity
+    </h1>
+
     <p class="shop-hero-sub">
-      Crazy deals!
-      Tap a piece to reserve it on WhatsApp.
+      Crazy deals! Tap a piece to reserve it on WhatsApp
     </p>
   </div>
 </section>
 
+
+<!-- =====================================
+     DESKTOP MARQUEE
+===================================== -->
+
 <div class="marquee-strip">
   <div class="marquee-track">
+
     @for (item of marqueeItems; track $index) {
       <span class="marquee-item">
         {{ item }}
         <span class="marquee-dot"></span>
       </span>
     }
+
     @for (item of marqueeItems; track $index) {
       <span class="marquee-item">
         {{ item }}
         <span class="marquee-dot"></span>
       </span>
     }
+
   </div>
 </div>
 
-<section class="shop-filters">
-  <div class="filter-search">
-    <span class="filter-search-icon">✿</span>
-    <input
-      type="text"
-      placeholder="Search the collection..."
-      [(ngModel)]="searchTerm"
-    />
+
+<!-- =====================================
+     FILTER AREA
+===================================== -->
+
+<section class="shop-filters" style="margin-top: 4rem;">
+
+
+  <!-- ===============================
+       DESKTOP SEARCH
+  ================================ -->
+
+  <div class="desktop-shop-search">
+
+    <div class="filter-search">
+
+      <span class="filter-search-icon">✿</span>
+
+      <input
+        type="text"
+        placeholder="Search the collection..."
+        [(ngModel)]="searchTerm"
+      />
+
+    </div>
+
   </div>
 
+
+  <!-- ===============================
+       MOBILE SEARCH + FILTER
+  ================================ -->
+
+  <div class="mobile-shop-search">
+
+    <div class="shop-search-row">
+
+      <!-- SEARCH -->
+      <div class="filter-search mobile-search-input">
+
+        <svg
+          class="search-icon"
+      viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1"
+          stroke-linecap="round"
+        >
+          <circle cx="11" cy="11" r="7"></circle>
+          <path d="M20 20L16.5 16.5"></path>
+        </svg>
+
+        <input
+          type="text"
+          placeholder="Search gifts, flowers & more..."
+          [(ngModel)]="searchTerm"
+        />
+
+      </div>
+
+
+      <!-- FILTER BUTTON -->
+      <button
+        type="button"
+        class="shop-filter-button"
+        aria-label="Filter products"
+      >
+
+        <svg
+          viewBox="0 0 20 20"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1"
+          stroke-linecap="round"
+        >
+
+          <line x1="4" y1="7" x2="20" y2="7"></line>
+          <circle cx="9" cy="7" r="2"></circle>
+
+          <line x1="4" y1="12" x2="20" y2="12"></line>
+          <circle cx="15" cy="12" r="2"></circle>
+
+          <line x1="4" y1="17" x2="20" y2="17"></line>
+          <circle cx="11" cy="17" r="2"></circle>
+
+        </svg>
+
+      </button>
+
+    </div>
+
+  </div>
+<!-- MOBILE PROMO BANNER -->
+<div class="mobile-promo-slider">
+
+  <div
+    class="promo-track"
+    [style.transform]="'translateX(-' + (promoIndex * 100) + '%)'"
+  >
+
+    @for (promo of promoSlides; track promo.image) {
+
+      <div
+        class="promo-slide"
+        [style.backgroundImage]="'url(' + promo.image + ')'"
+      >
+
+        <!-- DARK/SOFT OVERLAY -->
+        <div class="promo-overlay"></div>
+
+        <!-- TEXT -->
+        <div class="promo-content">
+
+          <span class="promo-small">
+            {{ promo.small }}
+          </span>
+
+          <h2>
+            {{ promo.title }}
+          </h2>
+
+          <p>
+            {{ promo.description }}
+          </p>
+
+          <button
+            type="button"
+            class="promo-button"
+            (click)="promoAction(promo)"
+          >
+            {{ promo.button }}
+            <span>→</span>
+          </button>
+
+        </div>
+
+      </div>
+
+    }
+
+  </div>
+
+
+  <!-- DOTS -->
+  <div class="promo-dots">
+
+    @for (promo of promoSlides; track promo.image; let i = $index) {
+
+      <button
+        type="button"
+        class="promo-dot"
+        [class.active]="promoIndex === i"
+        (click)="promoIndex = i"
+      ></button>
+
+    }
+
+  </div>
+
+</div>
+
+  <!-- ===============================
+       CATEGORIES — BOTH
+  ================================ -->
+
   <div class="filter-pills">
+
     @for (category of categories; track category) {
+
       <button
         type="button"
         class="filter-pill"
@@ -49,9 +220,14 @@
       >
         {{ category }}
       </button>
+
     }
+
   </div>
+
 </section>
+<!-- MOBILE PROMO SLIDER -->
+
 
 <section class="shop-grid-section">
   @if (filteredProducts.length) {
@@ -69,14 +245,14 @@
       @for (product of filteredProducts; track product.title; let i = $index) {
         <div class="bloom" [class.bloom-offset]="i % 2 === 1" style="gap: 3rem;">
           <div class="bloom-frame">
-            <!-- <span class="bloom-tag">{{ product.tag }}</span> -->
+     
             <img [src]="product.image" [alt]="product.title" />
           </div>
 
           <div class="bloom-info">
             <div class="bloom-title">{{ product.title }}</div>
             <div class="bloom-divider">✿</div>
-            <div class="bloom-sub">{{ product.sub }}</div>
+           
             <div class="bloom-price">${{ product.price }}</div>
 
             <button
@@ -106,4 +282,7 @@
 
 
   <span class="footer-credit">Made with <span>♥</span> Velinea © 2026</span>
-</footer>
+</footer> 
+
+
+

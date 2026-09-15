@@ -1,73 +1,165 @@
 <nav class="navbar" [class.scrolled]="isScrolled()">
 
-  <!-- Gold Progress Bar -->
-  <div class="progress-bar">
-    <div class="progress-fill" [style.width.%]="scrollProgress()"></div>
+  <!-- PROGRESS -->
+
+
+  <!-- =========================
+       DESKTOP NAVBAR
+  ========================== -->
+  <div class="desktop-navbar">
+
+    <div class="nav-inner">
+
+      <a routerLink="/" class="logo">
+        <span class="logo-main">VELINEA</span>
+      </a>
+
+      <ul class="nav-links">
+        @for (link of navLinks; track link.path) {
+          <li>
+            <a
+              [routerLink]="link.path"
+              routerLinkActive="active"
+              class="nav-link">
+
+              {{ link.label }}
+
+              <span class="link-line"></span>
+            </a>
+          </li>
+        }
+      </ul>
+
+      <div class="shops">
+
+        <a
+          routerLink="/shop"
+          routerLinkActive="active"
+          class="nav-link">
+          Shop
+        </a>
+
+        <a
+          routerLink="/eventplanner"
+          routerLinkActive="active"
+          class="nav-link">
+          Events
+        </a>
+
+      </div>
+
+      <a
+        href="https://wa.me/96179423997"
+        target="_blank">
+
+        <button class="cta-btn">
+          Contact Us ↗
+        </button>
+
+      </a>
+
+    </div>
+
   </div>
 
-  <div class="nav-inner">
 
-    <!-- Logo -->
-    <a routerLink="/" class="logo">
-      <span class="logo-main">VELINEA</span>
-      <!-- <span class="logo-sub">TASTY BITES</span> -->
-    </a>
+  <!-- =========================
+       MOBILE NAVBAR
+  ========================== -->
+  <div class="mobile-navbar">
 
-    <!-- Links Desktop -->
-    <ul class="nav-links ">
-      @for (link of navLinks; track link.path) {
-        <li>
-          <a [routerLink]="link.path"
-             routerLinkActive="active"
-             class="nav-link">
-            {{ link.label }}
-            <span class="link-line"></span>
-          </a>
-        </li>
-      }
-    </ul>
-<div class="shops">
-    <a routerLink="/shop"
-             routerLinkActive="active"
-             class="nav-link">
-            Shop
-            <span class="link-line"></span>
-          </a>
-             <a routerLink="/eventplanner"
-             routerLinkActive="active"
-             class="nav-link">
-            Events
-            <span class="link-line"></span>
-          </a>
-</div>
-    <!-- CTA -->
-    <a href="https://wa.me/96179423997" target="_blank">
-  <button class="cta-btn">Contact Us ↗</button>
-</a>
+    <!-- LEFT MENU -->
+    <button
+      class="mobile-menu-icon"
+      type="button"
+      (click)="toggleMenu()"
+      [class.open]="isMenuOpen()"
+      aria-label="Menu">
 
-    <!-- Mobile Hamburger -->
-    <button class="hamburger" (click)="toggleMenu()" [class.open]="isMenuOpen()">
-      <span></span><span></span><span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+
     </button>
 
+
+    <!-- CENTER -->
+<div class="mobile-brand">
+
+  <!-- V LOGO -->
+  <a routerLink="/" class="mobile-v-link">
+    <img
+      src="/vel2.jpeg"
+      alt="Velinea"
+      class="mobile-v-logo"
+    >
+  </a>
+
+  <!-- VELINEA -->
+  <a routerLink="/" class="mobile-logo">
+    VELINEA
+  </a>
+
+  <!-- TAGLINE -->
+  <div class="mobile-tagline">
+    <span></span>
+    <p>EVENTS &amp; GIFTS </p>
+    <span></span>
   </div>
 
-  <!-- Mobile Menu -->
+</div>
+
+
+    <!-- RIGHT CART -->
+    <a
+      routerLink="/cart"
+      class="mobile-cart"
+      aria-label="Cart">
+
+      <svg
+        class="cart-icon"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.8"
+        stroke-linecap="round"
+        stroke-linejoin="round">
+
+        <circle cx="9" cy="20" r="1"></circle>
+        <circle cx="19" cy="20" r="1"></circle>
+
+        <path
+          d="M3 4h2l2.4 10.2a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 2-1.6L21 8H6">
+        </path>
+
+      </svg>
+
+      <span class="cart-count">2</span>
+
+    </a>
+
+  </div>
+
+
+  <!-- MOBILE DROPDOWN MENU -->
   @if (isMenuOpen()) {
-    <div class="mobile-menu">
-      @for (link of menu; track link.path) {
-        <a [routerLink]="link.path"
-           routerLinkActive="active"
-           (click)="toggleMenu()"
-           class="mobile-link">
-          {{ link.label }}
-        </a>
-      }
-   
-        <a href="https://wa.me/96179423997" target="_blank">
-  <button class="cta-btn mobile-cta">Contact Us ↗</button>
-</a>
+
+    <div class="mobile-dropdown">
+
+      <a routerLink="/shop" (click)="toggleMenu()">
+        Shop
+      </a>
+
+      <a routerLink="/eventplanner" (click)="toggleMenu()">
+        Events
+      </a>
+
+      <a routerLink="/about" (click)="toggleMenu()">
+        About
+      </a>
+
     </div>
+
   }
 
 </nav>
