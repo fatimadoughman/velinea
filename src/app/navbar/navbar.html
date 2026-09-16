@@ -163,3 +163,60 @@
   }
 
 </nav>
+
+<!-- MOBILE BOTTOM NAV -->
+<nav class="mobile-bottom-nav">
+
+  <a
+    routerLink="/"
+    routerLinkActive="active"
+    [routerLinkActiveOptions]="{ exact: true }"
+    class="bottom-nav-item">
+
+    <div class="nav-icon">
+      <i class="bi bi-house-door"></i>
+    </div>
+
+    <span>Home</span>
+  </a>
+
+
+  <a
+    routerLink="/shop"
+    routerLinkActive="active"
+    class="bottom-nav-item">
+
+    <div class="nav-icon">
+      <i class="bi bi-bag"></i>
+    </div>
+
+    <span>Shop</span>
+  </a>
+
+
+  <a
+    routerLink="/events"
+    routerLinkActive="active"
+    class="bottom-nav-item">
+
+    <div class="nav-icon">
+      <i class="bi bi-gift"></i>
+    </div>
+
+    <span>Events</span>
+  </a>
+
+
+  <a
+    routerLink="/contact"
+    routerLinkActive="active"
+    class="bottom-nav-item">
+
+    <div class="nav-icon">
+      <i class="bi bi-person"></i>
+    </div>
+
+    <span>Contact</span>
+  </a>
+
+</nav>

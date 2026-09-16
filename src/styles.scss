@@ -12,6 +12,7 @@
   --color-900: #470016;
   --color-950: #190008;
 }
+@import "bootstrap-icons/font/bootstrap-icons.css";
 @keyframes petalFall {
   0%   { transform: translateY(-100px) translateX(0) rotate(0deg); opacity: 0; }
   10%  { opacity: 0.75; }
