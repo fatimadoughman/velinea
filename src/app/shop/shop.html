@@ -48,7 +48,7 @@
      FILTER AREA
 ===================================== -->
 
-<section class="shop-filters" style="margin-top: 4rem;">
+<section class="shop-filters" style="margin-top: 4rem; ">
 
 
   <!-- ===============================
@@ -57,7 +57,7 @@
 
   <div class="desktop-shop-search">
 
-    <div class="filter-search">
+    <div class="filter-search" >
 
       <span class="filter-search-icon">✿</span>
 
@@ -80,7 +80,7 @@
 
     <div class="shop-search-row">
 
-      <!-- SEARCH -->
+      
       <div class="filter-search mobile-search-input">
 
         <svg
@@ -203,86 +203,29 @@
   </div>
 
 </div>
+<!-- MOVING MARQUEE -->
+<div class="velinea-moving-line">
+  <div class="velinea-moving-track">
 
-  <!-- ===============================
-       CATEGORIES — BOTH
-  ================================ -->
+    @for (item of marqueeItems; track $index) {
+      <span class="velinea-moving-item">
+        {{ item }}
+        <span class="velinea-moving-dot"></span>
+      </span>
+    }
 
-  <div class="filter-pills">
-
-    @for (category of categories; track category) {
-
-      <button
-        type="button"
-        class="filter-pill"
-        [class.active]="activeCategory === category"
-        (click)="setCategory(category)"
-      >
-        {{ category }}
-      </button>
-
+    @for (item of marqueeItems; track $index) {
+      <span class="velinea-moving-item">
+        {{ item }}
+        <span class="velinea-moving-dot"></span>
+      </span>
     }
 
   </div>
 
-</section>
-<!-- MOBILE PROMO SLIDER -->
+</div>
+  
 
-
-<section class="shop-grid-section">
-  @if (filteredProducts.length) {
-    <div class="garden-row">
-      <svg class="vine" viewBox="0 0 1000 140" preserveAspectRatio="none">
-        <path
-          d="M0,70 C120,15 230,125 350,70 C470,15 580,125 700,70 C800,20 900,120 1000,70"
-          fill="none"
-          stroke="var(--rose)"
-          stroke-width="1.5"
-          opacity="0.28"
-        />
-      </svg>
-
-      @for (product of filteredProducts; track product.title; let i = $index) {
-        <div class="bloom" [class.bloom-offset]="i % 2 === 1" style="gap: 3rem;">
-          <div class="bloom-frame">
-     
-            <img [src]="product.image" [alt]="product.title" />
-          </div>
-
-          <div class="bloom-info">
-            <div class="bloom-title">{{ product.title }}</div>
-            <div class="bloom-divider">✿</div>
-           
-            <div class="bloom-price">${{ product.price }}</div>
-
-            <button
-              type="button"
-              class="bloom-order"
-              (click)="orderProduct(product)"
-            >
-              Reserve on WhatsApp
-            </button>
-          </div>
-        </div>
-      }
-    </div>
-  } @else {
-    <div class="empty-state">
-      <span class="empty-icon">✿</span>
-      <p class="empty-title">Nothing matches just yet</p>
-      <p class="empty-text">Try a different search, or browse another category.</p>
-      <button type="button" class="empty-reset" (click)="clearFilters()">
-        Clear filters
-      </button>
-    </div>
-  }
-</section>
-<footer>
-  <span class="footer-wordmark">Velinea</span>
-
-
-  <span class="footer-credit">Made with <span>♥</span> Velinea © 2026</span>
-</footer> 
 
 
 

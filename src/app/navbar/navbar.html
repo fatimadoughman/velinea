@@ -167,55 +167,35 @@
 <!-- MOBILE BOTTOM NAV -->
 <nav class="mobile-bottom-nav">
 
-  <a
-    routerLink="/"
-    routerLinkActive="active"
-    [routerLinkActiveOptions]="{ exact: true }"
-    class="bottom-nav-item">
-
-    <div class="nav-icon">
-      <i class="bi bi-house-door"></i>
-    </div>
-
+  <!-- HOME -->
+  <a routerLink="/" class="bottom-nav-item">
+    <i class="bi bi-house-door"></i>
     <span>Home</span>
   </a>
 
-
-  <a
-    routerLink="/shop"
-    routerLinkActive="active"
-    class="bottom-nav-item">
-
-    <div class="nav-icon">
-      <i class="bi bi-bag"></i>
-    </div>
-
+  <!-- GIFTS -->
+  <a routerLink="/shop" class="bottom-nav-item">
+    <i class="bi bi-gift"></i>
     <span>Shop</span>
   </a>
 
-
-  <a
-    routerLink="/events"
-    routerLinkActive="active"
-    class="bottom-nav-item">
-
-    <div class="nav-icon">
-      <i class="bi bi-gift"></i>
+  <!-- CENTER ORDER BUTTON -->
+  <a routerLink="/shop" class="center-nav-item">
+    <div class="center-circle">
+      <i class="bi bi-bag-heart"></i>
+      <span>Order</span>
     </div>
+  </a>
 
+  <!-- EVENTS -->
+  <a routerLink="/events" class="bottom-nav-item">
+    <i class="bi bi-calendar-heart"></i>
     <span>Events</span>
   </a>
 
-
-  <a
-    routerLink="/contact"
-    routerLinkActive="active"
-    class="bottom-nav-item">
-
-    <div class="nav-icon">
-      <i class="bi bi-person"></i>
-    </div>
-
+  <!-- CONTACT -->
+  <a routerLink="/contact" class="bottom-nav-item">
+    <i class="bi bi-person"></i>
     <span>Contact</span>
   </a>
 

@@ -493,53 +493,200 @@
 
   z-index: 1000;
 }
+/* =========================================
+   VELINEA MOBILE BOTTOM NAVIGATION
+========================================= */
 
-  /* ========================
-     NAV ITEM
-  ======================== */
-.bottom-nav-item {
-  position: relative;
-  flex: 1;
-
-  height: 55px; /* same as navbar */
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  text-decoration: none;
-  color: #470016;
-
-  font-size: 9px; /* smaller text */
-  font-weight: 400;
-
-  gap: 2px;
-
-  padding: 0; /* REMOVE padding-bottom: 12px */
+.mobile-bottom-nav {
+  display: none;
 }
 
-.nav-icon {
-  width: 20px;
-  height: 20px;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* =========================================
+   MOBILE
+========================================= */
 
-  font-size: 17px;
-}
+@media (max-width: 768px) {
 
-.nav-icon i {
-  font-size: 17px; /* smaller icon */
-  line-height: 1;
-}
+  /* MAIN NAVBAR */
+  .mobile-bottom-nav {
+    position: fixed;
 
-.bottom-nav-item span {
-  font-size: 9px;
-  line-height: 1;
-}
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
 
-  
+    width: 100%;
+    max-width: 450px;
+    height: 70px;
 
-}
+    background: #ffffff;
+
+    border-radius: 26px 26px 0 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    padding: 0 8px;
+
+    box-sizing: border-box;
+
+    box-shadow:
+      0 -5px 20px rgba(71, 0, 22, 0.13);
+
+    z-index: 1000;
+  }
+
+
+  /* =========================================
+     NORMAL NAV ITEMS
+  ========================================= */
+
+  .bottom-nav-item {
+    flex: 1;
+
+    height: 64px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 5px;
+
+    color: #470016;
+
+    text-decoration: none;
+
+    font-size: 11px;
+    font-weight: 500;
+
+    transition:
+      color 0.25s ease,
+      transform 0.25s ease;
+  }
+
+
+  /* ICON CONTAINER */
+
+  .nav-icon {
+    width: 26px;
+    height: 26px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+
+  /* NORMAL ICON */
+
+  .nav-icon i,
+  .bottom-nav-item i {
+    font-size: 23px;
+    line-height: 1;
+  }
+
+
+  /* TEXT */
+
+  .bottom-nav-item span {
+    font-size: 10px;
+    line-height: 1;
+
+    white-space: nowrap;
+  }
+
+
+  /* CLICK EFFECT */
+
+  .bottom-nav-item:active {
+    transform: scale(0.94);
+  }
+
+
+  /* ACTIVE PAGE */
+
+  .bottom-nav-item.active {
+    color: #750123;
+    font-weight: 600;
+  }
+
+
+  /* =========================================
+     CENTER ORDER BUTTON
+  ========================================= */
+
+  .center-nav-item {
+    flex: 1;
+
+    height: 64px;
+
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-decoration: none;
+  }
+
+
+  /* BURGUNDY CIRCLE */
+
+  .center-circle {
+    position: absolute;
+
+    bottom: 7px;
+
+    width: 64px;
+    height: 64px;
+
+    border-radius: 50%;
+
+    background: #750123;
+    color: #ffffff;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 4px;
+
+    box-shadow:
+      0 7px 18px rgba(117, 1, 35, 0.28);
+
+    transition:
+      transform 0.25s ease,
+      box-shadow 0.25s ease;
+  }
+
+
+  /* CENTER ICON */
+
+  .center-circle i {
+    font-size: 24px;
+    line-height: 1;
+  }
+
+
+  /* CENTER TEXT */
+
+  .center-circle span {
+    color: #ffffff;
+
+    font-size: 10px;
+    font-weight: 500;
+
+    line-height: 1;
+  }
+
+
+  /* CENTER CLICK EFFECT */
+
+  .center-circle:active {
+    transform: scale(0.94);
+  }
+}}

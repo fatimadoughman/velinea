@@ -21,13 +21,6 @@ export class Shop {
 
   whatsappNumber = '96179423997';
 
-  marqueeItems: string[] = [
-    'Limited Edition',
-    'Handcrafted Fresh',
-    'Made to Order',
-    'While Supplies Last'
-  ];
-
   products: Product[] = [
 
 {
@@ -116,7 +109,16 @@ export class Shop {
     window.open(url, '_blank');
   }
   promoIndex = 0;
-
+marqueeItems: string[] = [
+  'Celebration Cakes',
+  'Floral Gifts',
+  'Gift Boxes',
+  'Custom Orders',
+  'Flower Cakes',
+  'Wedding Tiers',
+  'Birthday Specials',
+  'Corporate Gifting'
+];
 
 promoSlides = [
   {
