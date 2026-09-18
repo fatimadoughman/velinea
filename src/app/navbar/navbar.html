@@ -1,202 +1,408 @@
-<nav class="navbar" [class.scrolled]="isScrolled()">
+<nav
+  class="navbar"
+  [class.scrolled]="isScrolled()"
+>
 
-  <!-- PROGRESS -->
-
-
-  <!-- =========================
+  <!-- =====================================
        DESKTOP NAVBAR
-  ========================== -->
-  <div class="desktop-navbar">
+  ====================================== -->
+
+  <div
+    class="desktop-navbar"
+    style="height: 6.5rem;"
+  >
+
+    <!-- =====================================
+         DESKTOP MARQUEE
+    ====================================== -->
+
+    <div class="marquee-strip">
+
+      <div class="marquee-track">
+
+        @for (
+          item of marqueeItems;
+          track $index
+        ) {
+
+          <span class="marquee-item">
+
+            {{ item }}
+
+            <span class="marquee-dot"></span>
+
+          </span>
+
+        }
+
+
+        <!-- SECOND COPY FOR CONTINUOUS ANIMATION -->
+
+        @for (
+          item of marqueeItems;
+          track $index
+        ) {
+
+          <span class="marquee-item">
+
+            {{ item }}
+
+            <span class="marquee-dot"></span>
+
+          </span>
+
+        }
+
+      </div>
+
+    </div>
+
+
+    <!-- =====================================
+         DESKTOP NAV CONTENT
+    ====================================== -->
 
     <div class="nav-inner">
 
-      <a routerLink="/" class="logo">
-        <span class="logo-main">VELINEA</span>
-      </a>
 
-      <ul class="nav-links">
-        @for (link of navLinks; track link.path) {
-          <li>
-            <a
-              [routerLink]="link.path"
-              routerLinkActive="active"
-              class="nav-link">
+      <!-- =====================================
+           LEFT LINKS
+      ====================================== -->
 
-              {{ link.label }}
+      <div class="desktop-nav-left">
 
-              <span class="link-line"></span>
-            </a>
-          </li>
-        }
-      </ul>
+        <a
+          routerLink="/"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+          class="nav-link"
+        >
+          Home
+        </a>
 
-      <div class="shops">
 
         <a
           routerLink="/shop"
           routerLinkActive="active"
-          class="nav-link">
+          class="nav-link"
+        >
           Shop
         </a>
+
 
         <a
           routerLink="/eventplanner"
           routerLinkActive="active"
-          class="nav-link">
-          Events
+          class="nav-link"
+        >
+          Event Planner
         </a>
 
       </div>
 
-      <a
-        href="https://wa.me/96179423997"
-        target="_blank">
 
-        <button class="cta-btn">
-          Contact Us ↗
-        </button>
+      <!-- =====================================
+           CENTER LOGO
+      ====================================== -->
+
+      <a
+        routerLink="/"
+        class="logo"
+      >
+
+        <span class="logo-main">
+          VELINEA
+        </span>
+
+        <span class="logo-sub">
+          EVENTS &amp; GIFTS
+        </span>
 
       </a>
 
-    </div>
 
-  </div>
+      <!-- =====================================
+           RIGHT LINKS
+      ====================================== -->
 
+   <!-- =====================================
+     DESKTOP RIGHT SIDE
+===================================== -->
 
-  <!-- =========================
-       MOBILE NAVBAR
-  ========================== -->
-  <div class="mobile-navbar">
+<div class="desktop-nav-right">
 
-    <!-- LEFT MENU -->
-    <button
-      class="mobile-menu-icon"
-      type="button"
-      (click)="toggleMenu()"
-      [class.open]="isMenuOpen()"
-      aria-label="Menu">
+  <!-- ABOUT -->
 
-      <span></span>
-      <span></span>
-      <span></span>
-
-    </button>
-
-
-    <!-- CENTER -->
-<div class="mobile-brand">
-
-  <!-- V LOGO -->
-  <a routerLink="/" class="mobile-v-link">
-    <img
-      src="/vel2.jpeg"
-      alt="Velinea"
-      class="mobile-v-logo"
-    >
+  <a
+    routerLink="/about"
+    routerLinkActive="active"
+    class="nav-link"
+  >
+    About
   </a>
 
-  <!-- VELINEA -->
-  <a routerLink="/" class="mobile-logo">
-    VELINEA
+
+  <!-- CONTACT -->
+
+  <a
+    routerLink="/contact"
+    routerLinkActive="active"
+    class="nav-link"
+  >
+    Contact
   </a>
 
-  <!-- TAGLINE -->
-  <div class="mobile-tagline">
-    <span></span>
-    <p>EVENTS &amp; GIFTS </p>
-    <span></span>
-  </div>
+
+  <!-- CART -->
+
+  <a
+    routerLink="/card"
+    routerLinkActive="active"
+    class="desktop-icon desktop-cart"
+    aria-label="Cart"
+  >
+
+    <i class="bi bi-bag"></i>
+
+    @if (cartCount > 0) {
+      <span class="desktop-cart-count">
+        {{ cartCount }}
+      </span>
+    }
+
+  </a>
 
 </div>
-
-
-    <!-- RIGHT CART -->
-    <a
-      routerLink="/cart"
-      class="mobile-cart"
-      aria-label="Cart">
-
-      <svg
-        class="cart-icon"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="1.8"
-        stroke-linecap="round"
-        stroke-linejoin="round">
-
-        <circle cx="9" cy="20" r="1"></circle>
-        <circle cx="19" cy="20" r="1"></circle>
-
-        <path
-          d="M3 4h2l2.4 10.2a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 2-1.6L21 8H6">
-        </path>
-
-      </svg>
-
-      <span class="cart-count">2</span>
-
-    </a>
+    </div>
 
   </div>
 
 
-  <!-- MOBILE DROPDOWN MENU -->
-  @if (isMenuOpen()) {
+  <!-- =====================================
+       MOBILE MARQUEE
+  ====================================== -->
 
-    <div class="mobile-dropdown">
+  <div class="mobile-marquee">
 
-      <a routerLink="/shop" (click)="toggleMenu()">
-        Shop
-      </a>
+    <div class="marquee-track">
 
-      <a routerLink="/eventplanner" (click)="toggleMenu()">
-        Events
-      </a>
 
-      <a routerLink="/about" (click)="toggleMenu()">
-        About
+      @for (
+        item of marqueeItems;
+        track $index
+      ) {
+
+        <span class="marquee-item">
+
+          {{ item }}
+
+          <span class="marquee-dot"></span>
+
+        </span>
+
+      }
+
+
+      <!-- SECOND COPY FOR ANIMATION -->
+
+      @for (
+        item of marqueeItems;
+        track $index
+      ) {
+
+        <span class="marquee-item">
+
+          {{ item }}
+
+          <span class="marquee-dot"></span>
+
+        </span>
+
+      }
+
+    </div>
+
+  </div>
+
+
+  <!-- =====================================
+       MOBILE NAVBAR
+  ====================================== -->
+
+  <div class="mobile-navbar">
+
+
+    <!-- =====================================
+         MOBILE BRAND
+    ====================================== -->
+
+    <div class="mobile-brand">
+
+      <a
+        routerLink="/"
+        class="mobile-logo"
+      >
+        VELINEA
       </a>
 
     </div>
 
-  }
+
+    <!-- =====================================
+         MOBILE RIGHT ICONS
+    ====================================== -->
+
+    <div class="mobile-nav-actions">
+
+
+      <!-- CART -->
+
+      <a
+        routerLink="/card"
+        routerLinkActive="active"
+        class="mobile-cart"
+        aria-label="Cart"
+      >
+
+        <svg
+          class="cart-icon"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+
+          <circle
+            cx="9"
+            cy="20"
+            r="1"
+          ></circle>
+
+          <circle
+            cx="19"
+            cy="20"
+            r="1"
+          ></circle>
+
+          <path
+            d="M3 4h2l2.4 10.2a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 2-1.6L21 8H6"
+          ></path>
+
+        </svg>
+
+
+        <!-- TEMPORARY COUNT
+             We will connect this to CartService next -->
+
+       @if (cartCount > 0) {
+  <span class="cart-count">
+    {{ cartCount }}
+  </span>
+}
+
+      </a>
+
+
+
+  
+
+    </div>
+
+  </div>
 
 </nav>
 
-<!-- MOBILE BOTTOM NAV -->
+
+<!-- =====================================
+     MOBILE BOTTOM NAVIGATION
+===================================== -->
+
 <nav class="mobile-bottom-nav">
 
+
   <!-- HOME -->
-  <a routerLink="/" class="bottom-nav-item">
+
+  <a
+    routerLink="/"
+    routerLinkActive="active"
+    [routerLinkActiveOptions]="{ exact: true }"
+    class="bottom-nav-item"
+  >
+
     <i class="bi bi-house-door"></i>
-    <span>Home</span>
+
+    <span>
+      Home
+    </span>
+
   </a>
 
-  <!-- GIFTS -->
-  <a routerLink="/shop" class="bottom-nav-item">
+
+  <!-- SHOP -->
+
+  <a
+    routerLink="/shop"
+    routerLinkActive="active"
+    class="bottom-nav-item"
+  >
+
     <i class="bi bi-gift"></i>
-    <span>Shop</span>
+
+    <span>
+      Shop
+    </span>
+
   </a>
 
-  <!-- CENTER ORDER BUTTON -->
-  <a routerLink="/shop" class="center-nav-item">
-    <div class="center-circle">
-      <i class="bi bi-bag-heart"></i>
-      <span>Order</span>
-    </div>
+
+  <!-- CART / ORDER -->
+
+  <a
+    routerLink="/card"
+    routerLinkActive="active"
+    class="bottom-nav-item"
+  >
+
+    <i class="bi bi-bag-heart"></i>
+
+    <span>
+      Cart
+    </span>
+
   </a>
+
 
   <!-- EVENTS -->
-  <a routerLink="/events" class="bottom-nav-item">
+
+  <a
+    routerLink="/eventplanner"
+    routerLinkActive="active"
+    class="bottom-nav-item"
+  >
+
     <i class="bi bi-calendar-heart"></i>
-    <span>Events</span>
+
+    <span>
+      Events
+    </span>
+
   </a>
 
+
   <!-- CONTACT -->
-  <a routerLink="/contact" class="bottom-nav-item">
-    <i class="bi bi-person"></i>
-    <span>Contact</span>
-  </a>
+
+<a
+  routerLink="/about"
+  routerLinkActive="active"
+  class="bottom-nav-item"
+>
+  <i class="bi bi-info-circle"></i>
+
+  <span>
+    About
+  </span>
+</a>
 
 </nav>

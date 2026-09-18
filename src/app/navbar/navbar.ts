@@ -2,6 +2,10 @@
 import { Component, signal, HostListener } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import {
+  CartService,
+  CartItem
+} from '../services/cart.service';
 
 @Component({
   selector: 'app-navbar',
@@ -12,7 +16,11 @@ import { CommonModule } from '@angular/common';
 })
 
 export class Navbar {
-
+marqueeItems: string[] = [
+  'Free Delivery all over lebanon',
+  'discount up to 40%',
+  'Free Delivery all over lebanon',
+];
   isMenuOpen = signal(false);
 
   scrollProgress = signal(0);
@@ -46,6 +54,27 @@ export class Navbar {
   toggleMenu() {
     this.isMenuOpen.update(value => !value);
   }
+  cartCount = 0;
 
+
+
+constructor(
+  private cartService: CartService
+) {
+
+  this.cartService.cartItems$
+    .subscribe(items => {
+
+      this.cartCount = items.reduce(
+        (total, item) =>
+          total + item.quantity,
+        0
+      );
+
+    });
+
+}
+
+  
 
 }

@@ -3,63 +3,93 @@
 ===================================== -->
 
 <section class="shop-hero">
+
   <div class="shop-hero-overlay"></div>
 
   <div class="shop-hero-content">
-    <p class="section-label">Velinea Shop</p>
+
+    <p class="section-label">
+      Velinea Shop
+    </p>
 
     <h1 class="shop-hero-title">
       Welcome to the world of creativity
     </h1>
 
     <p class="shop-hero-sub">
-      Crazy deals! Tap a piece to reserve it on WhatsApp
+      Crazy deals! Tap a piece to discover something special.
     </p>
+
   </div>
+
 </section>
-
-
-<!-- =====================================
-     DESKTOP MARQUEE
-===================================== -->
-
-<div class="marquee-strip">
-  <div class="marquee-track">
-
-    @for (item of marqueeItems; track $index) {
-      <span class="marquee-item">
-        {{ item }}
-        <span class="marquee-dot"></span>
-      </span>
-    }
-
-    @for (item of marqueeItems; track $index) {
-      <span class="marquee-item">
-        {{ item }}
-        <span class="marquee-dot"></span>
-      </span>
-    }
-
-  </div>
-</div>
 
 
 <!-- =====================================
      FILTER AREA
 ===================================== -->
 
-<section class="shop-filters" style="margin-top: 4rem; ">
+<section
+  class="shop-filters"
+  style="margin-top: 4.5rem;"
+>
 
 
-  <!-- ===============================
+  <!-- =====================================
+       DESKTOP COLLECTION HEADER
+  ====================================== -->
+
+  <div class="desktop-collection-header">
+
+    <span class="desktop-collection-label">
+      OUR COLLECTION
+    </span>
+
+    <h2>
+      Gifts made to be remembered
+    </h2>
+
+    <p>
+      Explore thoughtful pieces for every special moment.
+    </p>
+
+
+    <!-- DESKTOP CATEGORY FILTERS -->
+
+    <div class="desktop-category-filters">
+
+      @for (
+        category of categories;
+        track category
+      ) {
+
+        <button
+          type="button"
+          class="desktop-category-pill"
+          [class.active]="selectedCategory === category"
+          (click)="selectCategory(category)"
+        >
+          {{ category }}
+        </button>
+
+      }
+
+    </div>
+
+  </div>
+
+
+  <!-- =====================================
        DESKTOP SEARCH
-  ================================ -->
+  ====================================== -->
 
   <div class="desktop-shop-search">
 
-    <div class="filter-search" >
+    <div class="filter-search">
 
-      <span class="filter-search-icon">✿</span>
+      <span class="filter-search-icon">
+        ✿
+      </span>
 
       <input
         type="text"
@@ -72,28 +102,42 @@
   </div>
 
 
-  <!-- ===============================
-       MOBILE SEARCH + FILTER
-  ================================ -->
+  <!-- =====================================
+       MOBILE SEARCH
+  ====================================== -->
 
   <div class="mobile-shop-search">
 
     <div class="shop-search-row">
 
-      
       <div class="filter-search mobile-search-input">
+
+
+        <!-- SEARCH ICON -->
 
         <svg
           class="search-icon"
-      viewBox="0 0 24 24"
+          viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
           stroke-width="1"
           stroke-linecap="round"
         >
-          <circle cx="11" cy="11" r="7"></circle>
-          <path d="M20 20L16.5 16.5"></path>
+
+          <circle
+            cx="11"
+            cy="11"
+            r="7"
+          ></circle>
+
+          <path
+            d="M20 20L16.5 16.5"
+          ></path>
+
         </svg>
+
+
+        <!-- SEARCH INPUT -->
 
         <input
           type="text"
@@ -103,78 +147,82 @@
 
       </div>
 
-
-      <!-- FILTER BUTTON -->
-      <button
-        type="button"
-        class="shop-filter-button"
-        aria-label="Filter products"
-      >
-
-        <svg
-          viewBox="0 0 20 20"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="1"
-          stroke-linecap="round"
-        >
-
-          <line x1="4" y1="7" x2="20" y2="7"></line>
-          <circle cx="9" cy="7" r="2"></circle>
-
-          <line x1="4" y1="12" x2="20" y2="12"></line>
-          <circle cx="15" cy="12" r="2"></circle>
-
-          <line x1="4" y1="17" x2="20" y2="17"></line>
-          <circle cx="11" cy="17" r="2"></circle>
-
-        </svg>
-
-      </button>
-
     </div>
 
   </div>
-<!-- MOBILE PROMO BANNER -->
+
+</section>
+
+
+<!-- =====================================
+     MOBILE PROMO SLIDER
+===================================== -->
+
 <div class="mobile-promo-slider">
+
+
+  <!-- SLIDER TRACK -->
 
   <div
     class="promo-track"
-    [style.transform]="'translateX(-' + (promoIndex * 100) + '%)'"
+    [style.transform]="
+      'translateX(-' + (promoIndex * 100) + '%)'
+    "
   >
 
-    @for (promo of promoSlides; track promo.image) {
+
+    @for (
+      promo of promoSlides;
+      track promo.id
+    ) {
+
 
       <div
         class="promo-slide"
-        [style.backgroundImage]="'url(' + promo.image + ')'"
+        [style.backgroundImage]="
+          promo.image
+            ? 'url(' + promo.image + ')'
+            : 'none'
+        "
       >
 
-        <!-- DARK/SOFT OVERLAY -->
+
+        <!-- OVERLAY -->
+
         <div class="promo-overlay"></div>
 
-        <!-- TEXT -->
+
+        <!-- CONTENT -->
+
         <div class="promo-content">
 
           <span class="promo-small">
             {{ promo.small }}
           </span>
 
+
           <h2>
             {{ promo.title }}
           </h2>
+
 
           <p>
             {{ promo.description }}
           </p>
 
+
           <button
             type="button"
             class="promo-button"
-            (click)="promoAction(promo)"
+            (click)="promoAction()"
           >
+
             {{ promo.button }}
-            <span>→</span>
+
+            <span>
+              →
+            </span>
+
           </button>
 
         </div>
@@ -186,46 +234,271 @@
   </div>
 
 
-  <!-- DOTS -->
+  <!-- =====================================
+       PROMO DOTS
+  ====================================== -->
+
   <div class="promo-dots">
 
-    @for (promo of promoSlides; track promo.image; let i = $index) {
+
+    @for (
+      promo of promoSlides;
+      track promo.id;
+      let i = $index
+    ) {
+
 
       <button
         type="button"
         class="promo-dot"
         [class.active]="promoIndex === i"
         (click)="promoIndex = i"
-      ></button>
+        aria-label="Change promotion"
+      >
+      </button>
+
 
     }
 
   </div>
 
 </div>
-<!-- MOVING MARQUEE -->
-<div class="velinea-moving-line">
-  <div class="velinea-moving-track">
 
-    @for (item of marqueeItems; track $index) {
-      <span class="velinea-moving-item">
-        {{ item }}
-        <span class="velinea-moving-dot"></span>
-      </span>
-    }
 
-    @for (item of marqueeItems; track $index) {
-      <span class="velinea-moving-item">
-        {{ item }}
-        <span class="velinea-moving-dot"></span>
-      </span>
+<!-- =====================================
+     MOBILE COLLECTION INTRO
+===================================== -->
+
+<div class="mobile-collection-intro">
+
+
+  <span class="collection-eyebrow">
+    OUR COLLECTION
+  </span>
+
+
+  <h2>
+    Gifts made to be remembered
+  </h2>
+
+
+  <p>
+    Explore thoughtful pieces for every special moment.
+  </p>
+
+
+  <!-- =====================================
+       MOBILE CATEGORY FILTERS
+  ====================================== -->
+
+  <div class="mobile-category-scroll">
+
+
+    @for (
+      category of categories;
+      track category
+    ) {
+
+
+      <button
+        type="button"
+        class="mobile-category"
+        [class.active]="selectedCategory === category"
+        (click)="selectCategory(category)"
+      >
+
+        {{ category }}
+
+      </button>
+
+
     }
 
   </div>
 
 </div>
-  
 
 
+<!-- =====================================
+     SHOP PRODUCTS
+===================================== -->
+
+<section class="shop-grid-section">
 
 
+  @if (filteredProducts.length > 0) {
+
+
+    <div class="garden-row">
+
+
+      <!-- DECORATIVE VINE -->
+
+      <svg
+        class="vine"
+        viewBox="0 0 1000 140"
+        preserveAspectRatio="none"
+      >
+
+        <path
+          d="
+            M0,70
+            C120,15 230,125 350,70
+            C470,15 580,125 700,70
+            C800,20 900,120 1000,70
+          "
+          fill="none"
+          stroke="var(--rose)"
+          stroke-width="1.5"
+          opacity="0.28"
+        />
+
+      </svg>
+
+
+      <!-- =====================================
+           PRODUCT LOOP
+      ====================================== -->
+
+      @for (
+        product of filteredProducts;
+        track product.id;
+        let i = $index
+      ) {
+
+
+        <article
+          class="bloom"
+          [class.bloom-offset]="i % 2 === 1"
+        >
+
+
+          <!-- PRODUCT IMAGE -->
+
+          <div class="bloom-frame">
+
+            <img
+              [src]="product.image"
+              [alt]="product.title"
+            />
+
+          </div>
+
+
+          <!-- PRODUCT INFORMATION -->
+
+          <div class="bloom-info">
+
+
+            <!-- PRODUCT TITLE -->
+
+            <div class="bloom-title">
+
+              {{ product.title }}
+
+            </div>
+
+
+            <!-- PRODUCT TAG -->
+
+            <div class="bloom-tag">
+
+              {{ product.tag }}
+
+            </div>
+
+
+            <!-- DECORATION -->
+
+            <div class="bloom-divider">
+              ✿
+            </div>
+
+
+            <!-- PRODUCT PRICE -->
+
+            <div class="bloom-price">
+
+
+              @if (
+                product.price.toLowerCase()
+                === 'customized'
+              ) {
+
+                Customized Price
+
+              } @else {
+
+                ${{ product.price }}
+
+              }
+
+
+            </div>
+
+
+            <!-- ADD TO CART -->
+
+            <button
+              type="button"
+              class="bloom-order"
+              (click)="addToCart(product)"
+            >
+
+              Add to Cart
+
+            </button>
+
+
+          </div>
+
+        </article>
+
+
+      }
+
+    </div>
+
+
+  } @else {
+
+
+    <!-- =====================================
+         EMPTY SEARCH RESULT
+    ====================================== -->
+
+    <div class="empty-state">
+
+
+      <span class="empty-icon">
+        ✿
+      </span>
+
+
+      <p class="empty-title">
+        Nothing matches just yet
+      </p>
+
+
+      <p class="empty-text">
+        Try a different search or browse another category.
+      </p>
+
+
+      <button
+        type="button"
+        class="empty-reset"
+        (click)="clearFilters()"
+      >
+
+        Clear filters
+
+      </button>
+
+
+    </div>
+
+
+  }
+
+</section>

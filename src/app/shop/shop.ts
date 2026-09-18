@@ -2,151 +2,252 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
-interface Product {
-  title: string;
-  tag: string;
-  category: string;
-  price: string;
-  image: string;
-}
+import {
+  CartService,
+  Product
+} from '../services/cart.service';
+
 
 @Component({
   selector: 'app-shop',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [
+    CommonModule,
+    FormsModule
+  ],
   templateUrl: './shop.html',
   styleUrl: './shop.scss'
 })
 export class Shop {
 
-  whatsappNumber = '96179423997';
+
+  /* =========================================
+     SEARCH + CATEGORY
+  ========================================= */
+
+  searchTerm = '';
+
+  selectedCategory = 'All';
+
+
+  /* =========================================
+     PROMO SLIDER
+  ========================================= */
+
+  promoIndex = 0;
+
+
+  /* =========================================
+     CART SERVICE
+  ========================================= */
+
+  constructor(
+    private cartService: CartService
+  ) {}
+
+
+  /* =========================================
+     PRODUCTS
+  ========================================= */
 
   products: Product[] = [
 
-{
-    title: 'Book Bouquet',
-    tag: 'A Gift for Every Book Lover',
-    category: 'Gifts',
-    price: '25+',
-    image: 'books.jpeg'
-  },
-  {
-    title: 'Baby Gift Crate',
-    tag: 'Welcome Little One',
-    category: 'Gifts',
-    price: '90+',
-    image: 'baby.png'
-  },
-  {
-    title: 'Luxury Gift Basket',
-    tag: 'Thoughtfully Curated',
-    category: 'Gifts',
-    image: 'bask1.jpeg',
-    price: ''
-  },
-{
-  title: 'Luxury Floral Gift Box',
-  tag: 'Elegant Surprises',
-  category: 'Gifts',
-  price: 'customized',
-  image: 'gift1.jpeg'
-},
-{
-  title: 'Beauty Gift Basket',
-  tag: 'Luxury Collection',
-  category: 'Gifts',
-  price: '30+',
-  image: 'gist2.jpeg'
-},
+    {
+      id: 1,
+      title: 'Book Bouquet',
+      tag: 'A Gift for Every Book Lover',
+      category: 'Gifts',
+      price: '25+',
+      image: 'books.jpeg'
+    },
 
-{
-  title: '7 Roses Cupcake Bouquet',
-  tag: 'Opening Offer',
-  category: 'Flowers',
+    {
+      id: 2,
+      title: 'Baby Gift Crate',
+      tag: 'Welcome Little One',
+      category: 'Gifts',
+      price: '90+',
+      image: 'baby.png'
+    },
+
+    {
+      id: 3,
+      title: 'Luxury Gift Basket',
+      tag: 'Thoughtfully Curated',
+      category: 'Gifts',
+      price: 'Customized',
+      image: 'bask1.jpeg'
+    },
+
+    {
+      id: 4,
+      title: 'Luxury Floral Gift Box',
+      tag: 'Elegant Surprises',
+      category: 'Gifts',
+      price: 'Customized',
+      image: 'gift1.jpeg'
+    },
+
+    {
+      id: 5,
+      title: 'Beauty Gift Basket',
+      tag: 'Luxury Collection',
+      category: 'Gifts',
+      price: '30+',
+      image: 'gist2.jpeg'
+    },
+
+    {
+      id: 6,
+      title: '7 Roses Cupcake Bouquet',
+      tag: 'Opening Offer',
+      category: 'Flowers',
+      price: 'Customized',
+      image: 'bouq.jpeg'
+    },
 
 
-  image: 'bouq.jpeg',
-  price: ''
-},
-  {
-    title: '7 Roses cupcake Bouquet',
-    tag: 'Opening Offer',
-    category: 'Flowers',
-
-
-    image: 'bouq1.jpeg',
-    price: ''
-  },
 
   ];
 
-  // built from the products above, plus an "All" option pinned first
-  categories: string[] = ['All', ...new Set(this.products.map(p => p.category))];
 
-  activeCategory = 'All';
-  searchTerm = '';
+  /* =========================================
+     CATEGORIES
+  ========================================= */
+
+  categories: string[] = [
+    'All',
+    ...new Set(
+      this.products.map(
+        product => product.category
+      )
+    )
+  ];
+
+
+  /* =========================================
+     SELECT CATEGORY
+  ========================================= */
+
+  selectCategory(category: string): void {
+
+    this.selectedCategory = category;
+
+  }
+
+
+  /* =========================================
+     FILTER PRODUCTS
+  ========================================= */
 
   get filteredProducts(): Product[] {
+
+    const search =
+      this.searchTerm
+        .trim()
+        .toLowerCase();
+
+
     return this.products.filter(product => {
-      const matchesCategory = this.activeCategory === 'All' || product.category === this.activeCategory;
-      const matchesSearch = product.title.toLowerCase().includes(this.searchTerm.toLowerCase());
-      return matchesCategory && matchesSearch;
+
+
+      /* SEARCH */
+
+      const matchesSearch =
+        product.title
+          .toLowerCase()
+          .includes(search)
+
+        ||
+
+        product.tag
+          .toLowerCase()
+          .includes(search);
+
+
+      /* CATEGORY */
+
+      const matchesCategory =
+        this.selectedCategory === 'All'
+
+        ||
+
+        product.category ===
+          this.selectedCategory;
+
+
+      return (
+        matchesSearch &&
+        matchesCategory
+      );
+
     });
+
   }
 
-  setCategory(category: string) {
-    this.activeCategory = category;
-  }
 
-  clearFilters() {
-    this.activeCategory = 'All';
+  /* =========================================
+     CLEAR FILTERS
+  ========================================= */
+
+  clearFilters(): void {
+
     this.searchTerm = '';
+
+    this.selectedCategory = 'All';
+
   }
 
-  orderProduct(product: Product) {
-    const message = `Hi Velinea! I'd like to order: ${product.title} ($${product.price})`;
-    const url = `https://wa.me/${this.whatsappNumber}?text=${encodeURIComponent(message)}`;
-    window.open(url, '_blank');
-  }
-  promoIndex = 0;
-marqueeItems: string[] = [
-  'Celebration Cakes',
-  'Floral Gifts',
-  'Gift Boxes',
-  'Custom Orders',
-  'Flower Cakes',
-  'Wedding Tiers',
-  'Birthday Specials',
-  'Corporate Gifting'
-];
 
+  /* =========================================
+     ADD TO CART
+  ========================================= */
+
+  addToCart(product: Product): void {
+
+    this.cartService.addToCart(product);
+
+    console.log(
+      'Added to cart:',
+      product.title
+    );
+
+  }
+
+
+  /* =========================================
+     PROMO SLIDES
+  ========================================= */
+
+  
 promoSlides = [
   {
+    id: 1,
     image: 'homepa.png',
     small: 'Made With Love',
     title: 'Gifts That Feel Special',
     description: 'Beautiful details for every unforgettable moment.',
     button: 'SHOP NOW'
   },
-
   {
-    image: 'promo2.jpeg',
+    id: 2,
+    image: '',
     small: 'Velinea Flowers',
     title: 'Say It With Flowers',
     description: 'Elegant bouquets made for the people you love.',
     button: 'EXPLORE'
   },
-
   {
-    image: 'promo3.jpeg',
+    id: 3,
+    image: '',
     small: 'Your Special Day',
     title: 'Celebrate Beautifully',
     description: 'Elegant details designed for unforgettable events.',
     button: 'DISCOVER'
   },
-
   {
-    image: 'promo4.jpeg',
+    id: 4,
+    image: '',
     small: 'Something Special',
     title: 'Made Just For You',
     description: 'Discover gifts created to make every moment sweeter.',
@@ -154,7 +255,23 @@ promoSlides = [
   }
 ];
 
-promoAction(promo: any) {
-  console.log('Promo clicked:', promo);
-}
+  /* =========================================
+     PROMO ACTION
+  ========================================= */
+
+  promoAction(): void {
+
+    const products =
+      document.querySelector(
+        '.shop-grid-section'
+      );
+
+
+    products?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    });
+
+  }
+
 }

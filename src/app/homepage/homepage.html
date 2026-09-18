@@ -1,0 +1,433 @@
+
+<section class="home-hero">
+
+  <div class="hero-card">
+
+    <img
+      src="homepa.jpeg"
+      alt="Velinea"
+      class="hero-image"
+    >
+
+    <div class="hero-content">
+
+      <p class="hero-small">
+        VELINEA • EVENTS & GIFTS
+      </p>
+
+      <a routerLink="/events" class="hero-button">
+        Explore our events →
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================
+     SHOP BY COLLECTION
+===================================== -->
+
+<section class="collections-section">
+
+  <!-- TITLE -->
+  <div class="collections-heading">
+
+    <h2>SHOP BY COLLECTION</h2>
+
+    <div class="heading-decoration">
+      <span></span>
+      <span class="heading-flower">✦</span>
+      <span></span>
+    </div>
+
+  </div>
+
+
+  <!-- COLLECTION CARDS -->
+  <div class="collections-grid">
+
+
+    <!-- FLOWERS -->
+    <a routerLink="/shop" class="collection-card">
+
+      <img
+        src="flowers.jpeg"
+        alt="Flowers Collection"
+      >
+
+      <div class="collection-overlay"></div>
+
+      <div class="collection-content">
+
+        <span class="collection-small">
+          FRESH & ELEGANT
+        </span>
+
+        <h3>
+          Floral<br>
+          Collection
+        </h3>
+
+        <p>
+          Bouquets made with love
+        </p>
+
+        <span class="collection-button">
+          SHOP NOW →
+        </span>
+
+      </div>
+
+    </a>
+
+
+    <!-- GIFT BOXES -->
+    <a routerLink="/shop" class="collection-card">
+
+      <img
+        src="gifts.jpeg"
+        alt="Gift Boxes"
+      >
+
+      <div class="collection-overlay"></div>
+
+      <div class="collection-content">
+
+        <span class="collection-small">
+          MADE FOR THEM
+        </span>
+
+        <h3>
+          Gift<br>
+          Boxes
+        </h3>
+
+        <p>
+          A little something special
+        </p>
+
+        <span class="collection-button">
+          SHOP NOW →
+        </span>
+
+      </div>
+
+    </a>
+
+
+    <!-- OCCASIONS -->
+    <a routerLink="/shop" class="collection-card">
+
+      <img
+        src="occasion.jpeg"
+        alt="Special Occasions"
+      >
+
+      <div class="collection-overlay"></div>
+
+      <div class="collection-content">
+
+        <span class="collection-small">
+          CELEBRATE LOVE
+        </span>
+
+        <h3>
+          Special<br>
+          Occasions
+        </h3>
+
+        <p>
+          For unforgettable moments
+        </p>
+
+        <span class="collection-button">
+          DISCOVER →
+        </span>
+
+      </div>
+
+    </a>
+
+
+    <!-- EVENTS -->
+    <a routerLink="/eventplanner" class="collection-card">
+
+      <img
+        src="events.jpeg"
+        alt="Velinea Events"
+      >
+
+      <div class="collection-overlay"></div>
+
+      <div class="collection-content">
+
+        <span class="collection-small">
+          THE VELINEA TOUCH
+        </span>
+
+        <h3>
+          Event<br>
+          Details
+        </h3>
+
+        <p>
+          Designed around your story
+        </p>
+
+        <span class="collection-button">
+          EXPLORE →
+        </span>
+
+      </div>
+
+    </a>
+
+  </div>
+
+</section>
+<!-- =====================================
+     BEST SELLERS
+===================================== -->
+
+<section class="best-sellers">
+
+  <div class="best-heading">
+    <h2>BEST SELLERS</h2>
+
+    <div class="best-heading-line">
+      <span></span>
+      <span class="best-star">✦</span>
+      <span></span>
+    </div>
+  </div>
+
+
+  <div class="best-grid">
+
+    @for (product of bestSellers; track product.title) {
+
+      <div class="best-card">
+
+        <!-- HEART -->
+        <button class="best-heart" type="button">
+          ♡
+        </button>
+
+
+        <!-- IMAGE -->
+        <div class="best-image-wrap">
+
+          <img
+            [src]="product.image"
+            [alt]="product.title"
+          >
+
+        </div>
+
+
+        <!-- INFORMATION -->
+        <div class="best-info">
+
+          <h3>{{ product.title }}</h3>
+
+          <p>{{ product.description }}</p>
+
+          <span class="best-price">
+            ${{ product.price }}
+          </span>
+
+          <button
+            type="button"
+            class="best-button"
+            (click)="addToCart(product)"
+          >
+            Add to card
+          </button>
+
+        </div>
+
+      </div>
+
+    }
+
+  </div>
+
+</section>
+
+
+<section class="testimonials" id="occasions">
+
+  <div class="testimonials-inner">
+
+    <div class="testimonials-heading">
+      <h2>LOVED BY OUR CLIENTS</h2>
+
+      <div class="testimonial-decoration">
+        <span></span>
+        <span class="testimonial-star">✦</span>
+        <span></span>
+      </div>
+    </div>
+
+
+    <div class="testimonial-slider">
+
+      <!-- LEFT ARROW -->
+      <button
+        class="testimonial-arrow"
+        type="button"
+        (click)="prevTestimonial()">
+        ←
+      </button>
+
+
+      <!-- 3 REVIEWS -->
+      <div class="testimonial-grid">
+
+        @for (t of visibleTestimonials; track t.name) {
+
+          <div class="testimonial-card">
+
+            <div class="testimonial-top">
+
+              <span class="quote-mark">“</span>
+
+              <div class="review-stars">
+                {{ '★'.repeat(t.rating) }}
+              </div>
+
+            </div>
+
+
+            <p class="testimonial-quote">
+              {{ t.quote }}
+            </p>
+
+
+            <div class="testimonial-author">
+
+              <div class="testimonial-avatar">
+                {{ t.init }}
+              </div>
+
+              <div>
+                <div class="testimonial-name">
+                  {{ t.name }}
+                </div>
+
+                <div class="testimonial-role">
+                  {{ t.role }}
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+        }
+
+      </div>
+
+
+      <!-- RIGHT ARROW -->
+      <button
+        class="testimonial-arrow"
+        type="button"
+        (click)="nextTestimonial(false)">
+        →
+      </button>
+
+    </div>
+
+
+    <button
+      class="review-open-btn"
+      type="button"
+      (click)="openReviewModal()">
+      LEAVE A REVIEW
+    </button>
+
+  </div>
+
+</section>
+
+@if (showReviewModal) {
+  <div class="review-overlay" (click)="closeReviewModal()">
+    <div class="review-modal" (click)="$event.stopPropagation()">
+      <button class="review-close" type="button" (click)="closeReviewModal()">×</button>
+
+      <h3>Leave a Review</h3>
+
+      <input
+        type="text"
+        placeholder="Your name"
+        [(ngModel)]="newReview.name"
+      />
+
+      <select [(ngModel)]="newReview.rating">
+        <option [ngValue]="5">★★★★★</option>
+        <option [ngValue]="4">★★★★</option>
+        <option [ngValue]="3">★★★</option>
+        <option [ngValue]="2">★★</option>
+        <option [ngValue]="1">★</option>
+      </select>
+
+      <textarea
+        placeholder="Write your review"
+        [(ngModel)]="newReview.quote">
+      </textarea>
+
+<button
+  type="button"
+  [disabled]="isSubmitting"
+  class="review-submit"
+  (click)="addReview()">
+  {{ isSubmitting ? 'Submitting...' : 'Submit Review' }}
+</button>
+    </div>
+  </div>
+}
+
+<div class="newsletter" id="about">
+  <p class="section-label">Stay Sweet</p>
+  <h3 class="section-title">Join our world of sweetness</h3>
+  <p>Get new collections, seasonal specials, and behind-the-scenes stories.</p>
+
+<form class="newsletter-form" (ngSubmit)="subscribe()">
+  <input
+    type="email"
+    [(ngModel)]="subscriberEmail"
+    name="email"
+    placeholder="Your email address"
+    required
+  />
+
+  <button type="submit" class="btn-subscribe">
+    Subscribe
+  </button>
+</form>
+@if (showSubscribeSuccess) {
+  <div class="success-overlay">
+    <div class="success-modal">
+
+      <div class="success-icon">💖</div>
+
+      <h2>You're In!</h2>
+
+      <p>
+        Thank you for subscribing to <strong>Velinea</strong>.<br>
+        You'll be the first to discover our newest cakes,
+        exclusive offers, and sweet surprises.
+      </p>
+
+      <button (click)="closeSuccessPopup()">
+        Continue
+      </button>
+
+    </div>
+  </div>
+}
+</div>

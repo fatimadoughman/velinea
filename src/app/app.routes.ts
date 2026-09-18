@@ -21,5 +21,9 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./eventplanner/eventplanner').then(m => m.Eventplanner )
   },
-  
+     {
+    path: 'card',
+    loadComponent: () =>
+      import('./card/card').then(m => m.Card )
+  },
 ];

@@ -1,0 +1,391 @@
+<section class="cart-page">
+
+
+  <!-- =====================================
+       CART HEADER
+  ====================================== -->
+
+  <header class="cart-header">
+
+    <div class="cart-heading">
+
+      <span class="cart-eyebrow">
+        VELINEA SHOP
+      </span>
+
+      <h1>
+        Your Cart
+      </h1>
+
+      <p>
+        {{ totalItems }}
+        {{ totalItems === 1 ? 'item' : 'items' }}
+        selected
+      </p>
+
+    </div>
+
+
+    @if (cartItems.length > 0) {
+
+      <button
+        type="button"
+        class="clear-cart"
+        (click)="clearCart()"
+      >
+        Clear cart
+      </button>
+
+    }
+
+  </header>
+
+
+
+  <!-- =====================================
+       CART WITH PRODUCTS
+  ====================================== -->
+
+  @if (cartItems.length > 0) {
+
+
+    <div class="cart-content">
+
+
+      <!-- ===============================
+           ITEMS
+      ================================ -->
+
+      <div class="cart-items">
+
+
+        @for (
+          item of cartItems;
+          track item.id
+        ) {
+
+
+          <article class="cart-item">
+
+
+            <!-- PRODUCT IMAGE -->
+
+            <div class="cart-image">
+
+              <img
+                [src]="item.image"
+                [alt]="item.title"
+              >
+
+            </div>
+
+
+
+            <!-- PRODUCT INFORMATION -->
+
+            <div class="cart-info">
+
+
+              <span class="cart-category">
+                {{ item.category }}
+              </span>
+
+
+              <h2>
+                {{ item.title }}
+              </h2>
+
+
+              <p class="cart-tag">
+                {{ item.tag }}
+              </p>
+
+
+
+              <!-- PRICE -->
+
+              <div class="cart-price">
+
+                @if (
+                  item.price.toLowerCase()
+                  === 'customized'
+                ) {
+
+                  Customized Price
+
+                } @else {
+
+                  ${{ item.price }}
+
+                }
+
+              </div>
+
+
+
+              <!-- CONTROLS -->
+
+              <div class="cart-controls">
+
+
+                <!-- QUANTITY -->
+
+                <div class="quantity-control">
+
+                  <button
+                    type="button"
+                    (click)="decrease(item)"
+                    aria-label="Decrease quantity"
+                  >
+                    −
+                  </button>
+
+
+                  <span>
+                    {{ item.quantity }}
+                  </span>
+
+
+                  <button
+                    type="button"
+                    (click)="increase(item)"
+                    aria-label="Increase quantity"
+                  >
+                    +
+                  </button>
+
+                </div>
+
+
+
+                <!-- REMOVE -->
+
+                <button
+                  type="button"
+                  class="remove-button"
+                  (click)="removeItem(item)"
+                >
+                  Remove
+                </button>
+
+
+              </div>
+
+            </div>
+
+          </article>
+
+        }
+
+      </div>
+
+
+
+      <!-- =====================================
+           ORDER BOX
+      ====================================== -->
+<!-- =====================================
+     ORDER SUMMARY
+===================================== -->
+
+<aside class="cart-summary">
+
+  <span class="summary-eyebrow">
+    ORDER SUMMARY
+  </span>
+
+  <h2>
+    Your Order
+  </h2>
+
+  <p class="summary-description">
+    Review your selection before placing your order.
+  </p>
+
+
+  <!-- ITEMS -->
+
+  <div class="summary-row">
+
+    <span>
+      Items
+    </span>
+
+    <strong>
+      {{ totalItems }}
+    </strong>
+
+  </div>
+
+
+  <!-- DELIVERY -->
+
+  <div class="summary-row">
+
+    <span>
+      Delivery
+    </span>
+
+    <strong class="free-text">
+      FREE
+    </strong>
+
+  </div>
+
+
+  <!-- PAYMENT -->
+
+  <div class="summary-row">
+
+    <span>
+      Payment
+    </span>
+
+    <strong>
+      Cash on Delivery
+    </strong>
+
+  </div>
+
+
+  <!-- TOTAL -->
+
+  <div class="summary-total">
+
+    <div>
+      <span class="total-label">
+        Total
+      </span>
+
+      <small>
+        Shipping included
+      </small>
+    </div>
+
+    <strong>
+      {{ cartTotal > 0 ? ('$' + cartTotal) : 'To be confirmed' }}
+    </strong>
+
+  </div>
+
+
+  <!-- FREE DELIVERY MESSAGE -->
+
+  <div class="free-delivery-note">
+
+    <i class="bi bi-truck"></i>
+
+    <div>
+      <strong>
+        Free Delivery
+      </strong>
+
+      <span>
+        Delivery is completely free with your order.
+      </span>
+    </div>
+
+  </div>
+
+
+  <!-- CASH ON DELIVERY -->
+
+  <div class="payment-note">
+
+    <i class="bi bi-cash-stack"></i>
+
+    <div>
+      <strong>
+        Cash on Delivery
+      </strong>
+
+      <span>
+        Pay when your order arrives.
+      </span>
+    </div>
+
+  </div>
+
+
+  <!-- ORDER BUTTON -->
+
+  <button
+    type="button"
+    class="whatsapp-order"
+    (click)="orderOnWhatsApp()"
+  >
+
+    Place Order
+
+   
+
+  </button>
+
+
+  <a
+    routerLink="/shop"
+    class="continue-shopping"
+  >
+    Continue shopping
+  </a>
+
+</aside>
+
+
+    </div>
+
+  }
+
+
+  <!-- =====================================
+       EMPTY CART
+  ====================================== -->
+
+  @else {
+
+
+    <div class="empty-cart">
+
+
+      <div class="empty-cart-icon">
+        ♡
+      </div>
+
+
+      <span class="cart-eyebrow">
+        YOUR COLLECTION
+      </span>
+
+
+      <h2>
+        Your cart is empty
+      </h2>
+
+
+      <p>
+        Discover beautiful gifts made
+        for unforgettable moments.
+      </p>
+
+
+      <a
+        routerLink="/shop"
+        class="empty-shop-button"
+      >
+
+        Explore the Shop
+
+        <span>
+          →
+        </span>
+
+      </a>
+
+
+    </div>
+
+
+  }
+
+
+</section>

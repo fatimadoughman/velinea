@@ -1,7 +1,21 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-@Component({
+
+
+interface EventService {
+  id: number;
+  number: string;
+  title: string;
+  description: string;
+  image: string;
+}
+
+interface EventFeature {
+  id: number;
+  icon: string;
+  title: string;
+}@Component({
   selector: 'app-eventplanner',
   imports: [CommonModule, FormsModule],
   standalone: true,
@@ -9,192 +23,159 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './eventplanner.scss',
 })
 export class Eventplanner {
-  occasions = [
+ 
+  services: EventService[] = [
+
     {
+      id: 1,
       number: '01',
+      title: 'Weddings',
+      description:
+        'Elegant celebrations designed from the first detail to the final moment.',
+      image: 'wedding1.jpeg'
+    },
+
+    {
+      id: 2,
+      number: '02',
       title: 'Engagements',
       description:
-        'Romantic floral setups, elegant seating areas and personalized details.',
-      image: 'eng.jpeg'
+        'Beautiful engagement settings created around your style, colors and story.',
+      image: 'engagement1.jpeg'
     },
+
     {
-      number: '02',
-      title: 'Bride To Be',
-      description:
-        'Luxury wedding décor designed to turn your vision into a timeless celebration.',
-      image: 'bride.png'
-    },
-    {
+      id: 3,
       number: '03',
-      title: 'Birthdays',
+      title: 'Proposals',
       description:
-        'Beautiful themes, balloon styling, flowers, cakes and dessert tables.',
-      image: 'hap.jpeg'
+        'Romantic proposal experiences designed to make the moment unforgettable.',
+      image: 'proposal1.jpeg'
     },
-     {
-      number: '04',
-      title: 'Buffet',
-      description:
-        'A wide range of delicious dishes, desserts and drinks for your guests.',
-      image: 'buffet.jpeg'
-    },
-       {
-      number: '05',
-      title: 'Invitational website link',
-      description:
-        'We will provide you with a personalized website link for your event, where you can share details, RSVP, and keep your guests informed.',
-      image: 'inv.jpeg'
-    },
-  ];
-  galleryImages: string[] = [
-'event1.jpeg','birthday.jpeg','event2.jpeg',
-'event4.jpeg','event3.jpeg',
 
- 
-];
-
-  services = [
     {
-      name: 'Event Setup',
+      id: 4,
+      number: '04',
+      title: 'Bride-to-Be',
+      description:
+        'Personalized celebrations created especially for the bride and her favorite people.',
+      image: 'bride1.jpeg'
+    },
+
+    {
+      id: 5,
+      number: '05',
+      title: 'Private Events',
+      description:
+        'Birthdays, dinners and intimate celebrations transformed into beautiful experiences.',
+      image: 'private1.jpeg'
+    }
+
+  ];
+
+
+  /* =========================================
+     EVENT FEATURES
+  ========================================= */
+
+  eventFeatures: EventFeature[] = [
+
+    {
+      id: 1,
       icon: '✦',
-      selected: false
+      title: 'Floral Design'
     },
+
     {
-      name: 'Flowers',
-      icon: '❀',
-      selected: false
+      id: 2,
+      icon: '✦',
+      title: 'Tables & Chairs'
     },
+
     {
-      name: 'Buffet',
-      icon: '⌒',
-      selected: false
+      id: 3,
+      icon: '✦',
+      title: 'Table Styling'
     },
+
     {
-      name: 'Desserts',
-      icon: '♔',
-      selected: false
+      id: 4,
+      icon: '✦',
+      title: 'Backdrops'
     },
+
     {
-      name: 'Gifts',
-      icon: '◇',
-      selected: false
+      id: 5,
+      icon: '✦',
+      title: 'Candles'
     },
+
     {
-      name: 'Baby Gifts',
-      icon: '♡',
-      selected: false
+      id: 6,
+      icon: '✦',
+      title: 'Dance Floor'
+    },
+
+    {
+      id: 7,
+      icon: '✦',
+      title: 'Lighting'
+    },
+
+    {
+      id: 8,
+      icon: '✦',
+      title: 'Sound System'
+    },
+
+    {
+      id: 9,
+      icon: '✦',
+      title: 'Zaffeh & Dabke'
+    },
+
+    {
+      id: 10,
+      icon: '✦',
+      title: 'Entertainment'
+    },
+
+    {
+      id: 11,
+      icon: '✦',
+      title: 'Welcome Drinks'
+    },
+
+    {
+      id: 12,
+      icon: '✦',
+      title: 'Photography & Video'
     }
+
   ];
 
-  processSteps = [
-    {
-      number: '01',
-      title: 'Share Your Vision',
-      description:
-        'Tell us about your occasion, preferred colors, date and budget.'
-    },
-    {
-      number: '02',
-      title: 'Receive Your Proposal',
-      description:
-        'We prepare a personalized concept with recommended services and pricing.'
-    },
-    {
-      number: '03',
-      title: 'Customize Every Detail',
-      description:
-        'Choose the flowers, setup, gifts, buffet and desserts you prefer.'
-    },
-    {
-      number: '04',
-      title: 'Celebrate Beautifully',
-      description:
-        'Our team prepares everything so you can enjoy your special moment.'
-    },
-      {
-      number: '05',
-      title: 'Invitational website link',
-      description:
-        'We will provide you with a personalized website link for your event, where you can share details, RSVP, and keep your guests informed.'
-    }
-  ];
 
-  plannerForm = {
-    name: '',
-    phone: '',
-    occasion: '',
-    eventDate: '',
-    guests: null as number | null,
-    budget: '',
-    colors: '',
-    message: ''
-  };
+  /* =========================================
+     WHATSAPP
+  ========================================= */
 
-  selectOccasion(occasion: string): void {
-    this.plannerForm.occasion = occasion;
+  whatsappNumber = '96179423997';
 
-    document
-      .getElementById('planner-form')
-      ?.scrollIntoView({ behavior: 'smooth' });
+
+  contactWhatsApp(): void {
+
+    const message =
+      `Hi Velinea! I'd like to plan an event with you.`;
+
+    const url =
+      `https://wa.me/${this.whatsappNumber}` +
+      `?text=${encodeURIComponent(message)}`;
+
+    window.open(
+      url,
+      '_blank'
+    );
+
   }
 
-  submitPlannerForm(): void {
-    const chosenServices = this.services
-      .filter(service => service.selected)
-      .map(service => service.name)
-      .join(', ');
-
-    const message = `
-Hello Velinea,
-
-I would like to request an event proposal.
-
-Name: ${this.plannerForm.name}
-Phone: ${this.plannerForm.phone}
-Occasion: ${this.plannerForm.occasion}
-Event date: ${this.plannerForm.eventDate}
-Guests: ${this.plannerForm.guests ?? 'Not specified'}
-Budget: ${this.plannerForm.budget || 'Not specified'}
-Services: ${chosenServices || 'Not specified'}
-Preferred colors: ${this.plannerForm.colors || 'Not specified'}
-
-Vision:
-${this.plannerForm.message || 'No additional information'}
-    `.trim();
-
-    const whatsappNumber = '961423997';
-
-    const whatsappUrl =
-      `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
-
-    window.open(whatsappUrl, '_blank');
-  }
-
-
-  promotions = [
-  {
-    tier: 'Basic',
-    image: 'mir.jpeg',
-    includes: ['Event Setup', 'Mirror'],
-    badge: null,
-    featured: false,
-    whatsappText: encodeURIComponent("Hi! I'm interested in the Basic promotion (Setup + Buffet).")
-  },
-  {
-    tier: 'Plus',
-    image: 'plus.jpeg',
-    includes: ['Event Setup', 'Mirror ', 'Buffet'],
-    badge: null,
-    featured: false,
-    whatsappText: encodeURIComponent("Hi! I'm interested in the Plus promotion (Setup + Mirror + Buffet).")
-  },
-  {
-    tier: 'Pro',
-    image: '/assets/images/promo-pro.jpg',
-    includes: ['Event Setup', 'Mirror ', 'Buffet', 'Digital Invitation Link'],
-    badge: 'Most Popular',
-    featured: true,
-    whatsappText: encodeURIComponent("Hi! I'm interested in the Pro promotion (Setup + Mirror + Buffet + Invitation Link).")
-  }
-];
 }
